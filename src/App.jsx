@@ -11,6 +11,9 @@ import Historia from './pages/Historia'
 import PadrePio from './pages/PadrePio'
 import DondeEstamos from './pages/DondeEstamos'
 import Biblioteca from './pages/Biblioteca'
+import BibliotecaOracion from './pages/BibliotecaOracion'
+import BibliotecaDocumentos from './pages/BibliotecaDocumentos'
+import BibliotecaGlosario from './pages/BibliotecaGlosario'
 import Contactenos from './pages/Contactenos'
 
 export default function App() {
@@ -30,6 +33,9 @@ export default function App() {
             <Route path="/padre-pio" element={<PadrePio />} />
             <Route path="/donde-estamos" element={<DondeEstamos />} />
             <Route path="/biblioteca" element={<Biblioteca />} />
+            <Route path="/biblioteca/oracion" element={<BibliotecaOracion />} />
+            <Route path="/biblioteca/documentos" element={<BibliotecaDocumentos />} />
+            <Route path="/biblioteca/glosario" element={<BibliotecaGlosario />} />
             <Route path="/contactenos" element={<Contactenos />} />
           </Routes>
         </main>
