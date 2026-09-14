@@ -7,8 +7,9 @@ export const CIUDADES = {
     whatsapp: '573016730620',
     donarUrl: null, // pendiente: link o datos reales de donación para Medellín
     puntos: [
-      // Ejemplo — reemplazar con los puntos de servicio reales de Medellín
-      // { nombre: 'Nombre del punto', descripcion: 'Breve descripción del servicio.', fotos: ['/images/....jpg'] },
+      { nombre: 'Ropero Tienda de Dios', fotos: [] },
+      { nombre: 'Canelazo', fotos: [] },
+      { nombre: 'Patio San Benito', fotos: [] },
     ],
   },
 }
