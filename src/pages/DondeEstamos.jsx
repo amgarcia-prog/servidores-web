@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
+import { CIUDADES } from '../data/ciudades'
 
 const PAISES = [
   {
@@ -6,7 +8,7 @@ const PAISES = [
     ciudades: [
       { nombre: 'Bogotá', img: '/images/ciudad-bogota.jpg' },
       { nombre: 'Bucaramanga', img: '/images/ciudad-bucaramanga.jpg' },
-      { nombre: 'Medellín', img: '/images/ciudad-medellin.jpg' },
+      { nombre: 'Medellín', img: '/images/ciudad-medellin.jpg', slug: 'medellin' },
       { nombre: 'Tuluá', img: '/images/ciudad-tulua.jpg' },
       { nombre: 'Barranquilla', img: '/images/ciudad-barranquilla.jpg' },
       { nombre: 'Neiva', img: '/images/ciudad-neiva.jpg' },
@@ -24,6 +26,39 @@ const PAISES = [
   },
 ]
 
+function CiudadCard({ c }) {
+  const clickable = c.slug && CIUDADES[c.slug]
+  const content = (
+    <>
+      <div className="aspect-[4/3] mb-3 overflow-hidden bg-brand-border">
+        {c.img && (
+          <img
+            src={c.img}
+            alt={c.nombre}
+            className={`w-full h-full object-cover ${clickable ? 'group-hover:scale-105 transition-transform duration-300' : ''}`}
+          />
+        )}
+      </div>
+      <p
+        className={`text-[15px] font-medium text-center ${
+          clickable ? 'text-brand-blue group-hover:text-brand-terracotta transition-colors' : 'text-brand-blue'
+        }`}
+      >
+        {c.nombre}
+      </p>
+    </>
+  )
+
+  if (clickable) {
+    return (
+      <Link to={`/donde-estamos/${c.slug}`} className="group block">
+        {content}
+      </Link>
+    )
+  }
+  return <div>{content}</div>
+}
+
 export default function DondeEstamos() {
   return (
     <>
@@ -38,12 +73,7 @@ export default function DondeEstamos() {
               </h2>
               <div className="grid grid-cols-4 gap-8">
                 {p.ciudades.map((c) => (
-                  <div key={c.nombre}>
-                    <div className="aspect-[4/3] mb-3 overflow-hidden bg-brand-border">
-                      {c.img && <img src={c.img} alt={c.nombre} className="w-full h-full object-cover" />}
-                    </div>
-                    <p className="text-[15px] font-medium text-brand-blue text-center">{c.nombre}</p>
-                  </div>
+                  <CiudadCard key={c.nombre} c={c} />
                 ))}
               </div>
             </div>
