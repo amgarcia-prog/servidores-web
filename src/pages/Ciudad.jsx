@@ -46,6 +46,48 @@ export default function Ciudad() {
     <>
       <PageBanner title={ciudad.nombre} img={ciudad.banner} />
 
+      {ciudad.subtitulo && (
+        <section className="px-[72px] pt-[60px] pb-4 text-center">
+          <p className="max-w-[800px] mx-auto font-serif-display text-[22px] italic text-brand-blue leading-[1.5]">
+            {ciudad.subtitulo}
+          </p>
+        </section>
+      )}
+
+      {/* HISTORIA */}
+      {ciudad.historia && (
+        <section className="px-[72px] py-[50px]">
+          <div className="max-w-[1100px] mx-auto grid grid-cols-[1.2fr_1fr] gap-14 items-center">
+            <div>
+              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
+                {ciudad.historia.titulo}
+              </h2>
+              <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.historia.texto}</p>
+            </div>
+            {ciudad.historia.foto && (
+              <img src={ciudad.historia.foto} alt={ciudad.historia.titulo} className="w-full aspect-[4/3] object-cover" />
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* LABOR HOY */}
+      {ciudad.labor && (
+        <section className="px-[72px] py-[50px] bg-white">
+          <div className="max-w-[1100px] mx-auto grid grid-cols-[1fr_1.2fr] gap-14 items-center">
+            {ciudad.labor.foto && (
+              <img src={ciudad.labor.foto} alt={ciudad.labor.titulo} className="w-full aspect-[4/3] object-cover" />
+            )}
+            <div>
+              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
+                {ciudad.labor.titulo}
+              </h2>
+              <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.labor.texto}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* DONDE SERVIMOS */}
       <section className="px-[72px] py-[70px]">
         <div className="max-w-[1200px] mx-auto">
@@ -58,14 +100,19 @@ export default function Ciudad() {
               Muy pronto publicaremos aquí los puntos de servicio de {ciudad.nombre}.
             </p>
           ) : (
-            <div className="grid grid-cols-2 gap-12">
+            <div className="grid grid-cols-3 gap-10">
               {ciudad.puntos.map((punto) => (
                 <div key={punto.nombre}>
-                  <h3 className="font-serif-display text-[21px] text-brand-blue font-medium mb-3">
+                  <h3 className="font-serif-display text-[21px] text-brand-blue font-medium mb-1.5">
                     {punto.nombre}
                   </h3>
+                  {punto.horario && (
+                    <p className="text-[12px] font-semibold uppercase tracking-wide text-brand-terracotta mb-3">
+                      {punto.horario}
+                    </p>
+                  )}
                   {punto.descripcion && (
-                    <p className="text-[15px] leading-[1.7] text-brand-ink-muted mb-4">{punto.descripcion}</p>
+                    <p className="text-[14.5px] leading-[1.75] text-brand-ink-muted mb-4">{punto.descripcion}</p>
                   )}
                   {punto.fotos?.length > 0 && (
                     <div className="grid grid-cols-3 gap-2">
@@ -82,6 +129,18 @@ export default function Ciudad() {
           )}
         </div>
       </section>
+
+      {/* CIERRE */}
+      {ciudad.cierre && (
+        <section className="px-[72px] py-[60px] bg-white text-center">
+          <div className="max-w-[800px] mx-auto">
+            <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
+              {ciudad.cierre.titulo}
+            </h2>
+            <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.cierre.texto}</p>
+          </div>
+        </section>
+      )}
 
       {/* CONTACTO + DONAR */}
       <section className="px-[72px] py-[70px] bg-brand-blue">
