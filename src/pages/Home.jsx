@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Carousel from '../components/Carousel'
 
 const QUOTES = [
@@ -10,12 +11,12 @@ const OBRAS_CARDS = [
   {
     title: 'Quiénes Somos',
     img: '/images/quienes-somos.jpg',
-    href: 'https://servidoresdelservidor.org/quienes-somos/',
+    to: '/quienes-somos',
   },
   {
     title: 'Espiritualidad',
     img: '/images/espiritualidad.jpg',
-    href: 'https://servidoresdelservidor.org/espiritualidad/',
+    to: '/espiritualidad',
   },
 ]
 
@@ -72,7 +73,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 gap-10 mb-16">
             {OBRAS_CARDS.map((card) => (
-              <a key={card.title} href={card.href} className="group block">
+              <Link key={card.title} to={card.to} className="group block">
                 <div className="overflow-hidden mb-5 aspect-[4/5]">
                   <img
                     src={card.img}
@@ -81,7 +82,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="font-serif-display text-[22px] text-brand-blue font-medium">{card.title}</h3>
-              </a>
+              </Link>
             ))}
           </div>
 

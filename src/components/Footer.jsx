@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const SOCIALS = [
   {
     label: 'Facebook',
@@ -23,15 +25,15 @@ export default function Footer() {
         © {new Date().getFullYear()} Servidores del Servidor. Todos los Derechos Reservados.
       </span>
       <div className="flex items-center gap-7">
-        <a href="https://servidoresdelservidor.org/biblioteca/" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
+        <Link to="/biblioteca" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
           Biblioteca
-        </a>
+        </Link>
         <a href="https://servidoresdelservidor.org/noticias/" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
           Publicaciones
         </a>
-        <a href="https://servidoresdelservidor.org/contactenos/" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
+        <Link to="/contactenos" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
           Contáctenos
-        </a>
+        </Link>
         <div className="flex gap-4 pl-3 border-l border-brand-border">
           <a href={SOCIALS[0].href} aria-label="Facebook">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
