@@ -6,7 +6,14 @@ export const CIUDADES = {
     subtitulo: 'Comunidad Hijos de Padre Pío: Un Latido de Amor en el Corazón de Medellín',
     banner: '/images/ciudad-medellin.jpg',
     whatsapp: '573016730620',
-    donarUrl: null, // pendiente: link o datos reales de donación para Medellín
+    cuentaBancaria: {
+      banco: 'Bancolombia',
+      tipo: 'Ahorros',
+      numero: '379-641966-49',
+      titular: 'DONUM CHRISTI COMUNIDAD APOSTOLICA SERVIDORES DEL SERVIDOR HIJOS DI PADRE PIO',
+      llaveBreB: '@medellin',
+      qr: null, // pendiente: imagen del QR
+    },
     historia: {
       titulo: 'Nuestra Historia: Una Semilla de Fe',
       texto:
