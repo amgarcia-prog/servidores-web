@@ -86,6 +86,14 @@ export default function Ciudad() {
         </section>
       )}
 
+      {ciudad.intro && (
+        <section className="px-[72px] pt-[60px] pb-4 text-center">
+          <p className="max-w-[800px] mx-auto text-[16px] leading-[1.8] text-brand-ink-muted">
+            {ciudad.intro}
+          </p>
+        </section>
+      )}
+
       {/* HISTORIA */}
       {ciudad.historia && (
         <section className="px-[72px] py-[50px]">
@@ -127,34 +135,47 @@ export default function Ciudad() {
             <h2 className="font-serif-display text-[28px] text-brand-blue font-medium">Dónde servimos</h2>
           </div>
 
-          {ciudad.puntos.length === 0 ? (
+          {!ciudad.grupos || ciudad.grupos.every((g) => g.puntos.length === 0) ? (
             <p className="text-brand-ink-muted text-[15px]">
               Muy pronto publicaremos aquí los puntos de servicio de {ciudad.nombre}.
             </p>
           ) : (
-            <div className="grid grid-cols-3 gap-10">
-              {ciudad.puntos.map((punto) => (
-                <div key={punto.nombre}>
-                  <h3 className="font-serif-display text-[21px] text-brand-blue font-medium mb-1.5">
-                    {punto.nombre}
-                  </h3>
-                  {punto.horario && (
-                    <p className="text-[12px] font-semibold uppercase tracking-wide text-brand-terracotta mb-3">
-                      {punto.horario}
-                    </p>
+            <div className="space-y-16">
+              {ciudad.grupos.map((grupo) => (
+                <div key={grupo.titulo || 'principal'}>
+                  {grupo.titulo && (
+                    <h3 className="font-serif-display text-[20px] text-brand-terracotta font-medium mb-8">
+                      {grupo.titulo}
+                    </h3>
                   )}
-                  {punto.descripcion && (
-                    <p className="text-[14.5px] leading-[1.75] text-brand-ink-muted mb-4">{punto.descripcion}</p>
-                  )}
-                  {punto.fotos?.length > 0 && (
-                    <div className="grid grid-cols-3 gap-2">
-                      {punto.fotos.map((foto) => (
-                        <div key={foto} className="aspect-square overflow-hidden">
-                          <img src={foto} alt={punto.nombre} className="w-full h-full object-cover" />
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div className="grid grid-cols-3 gap-10">
+                    {grupo.puntos.map((punto) => (
+                      <div key={punto.nombre}>
+                        {punto.fotos?.length > 0 && (
+                          <div className="aspect-[4/3] mb-4 overflow-hidden">
+                            <img src={punto.fotos[0]} alt={punto.nombre} className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                        <h4 className="font-serif-display text-[19px] text-brand-blue font-medium mb-1.5">
+                          {punto.nombre}
+                        </h4>
+                        {(punto.horario || punto.coordinador) && (
+                          <p className="text-[12px] font-semibold uppercase tracking-wide text-brand-terracotta mb-2">
+                            {[punto.coordinador && `Coordina: ${punto.coordinador}`, punto.horario].filter(Boolean).join(' · ')}
+                          </p>
+                        )}
+                        {punto.descripcion && (
+                          <p className="text-[14px] leading-[1.7] text-brand-ink-muted mb-2">{punto.descripcion}</p>
+                        )}
+                        {punto.direccion && (
+                          <p className="text-[13px] text-brand-ink-muted">{punto.direccion}</p>
+                        )}
+                        {punto.telefono && (
+                          <p className="text-[13px] text-brand-ink-muted">Tel: {punto.telefono}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>

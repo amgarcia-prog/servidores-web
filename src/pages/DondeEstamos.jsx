@@ -6,7 +6,7 @@ const PAISES = [
   {
     pais: 'Colombia',
     ciudades: [
-      { nombre: 'Bogotá', img: '/images/ciudad-bogota.jpg' },
+      { nombre: 'Bogotá', img: '/images/ciudad-bogota.jpg', slug: 'bogota' },
       { nombre: 'Bucaramanga', img: '/images/ciudad-bucaramanga.jpg' },
       { nombre: 'Medellín', img: '/images/ciudad-medellin.jpg', slug: 'medellin' },
       { nombre: 'Tuluá', img: '/images/ciudad-tulua.jpg', slug: 'tulua' },
