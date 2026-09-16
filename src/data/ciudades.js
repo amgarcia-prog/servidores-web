@@ -149,6 +149,12 @@ export const CIUDADES = {
     banner: '/images/ciudad-miami.jpg',
     whatsapp: '13057468465',
     whatsappDisplay: '+1 305 746 8465',
+    cuentaBancaria: {
+      banco: 'Wells Fargo Bank, N.A.',
+      tipo: 'Corriente (Cheques)',
+      numero: '7575178319',
+      titular: 'DONUM CHRISTI SERVIDORES DEL SERVIDOR',
+    },
     intro:
       'En Miami la comunidad comienza en noviembre del 2012, nos reunimos la noche de acción de gracias, acogiéndonos al llamado que nos hizo nuestro Señor. Desde ese día todas las semanas nos reunimos a preparar los alimentos y al día siguiente se los repartimos a nuestros hermanitos más necesitados, en la calle, en los diferentes puntos de servicio del sur de la Florida. Entregamos alrededor de 1.200 combos de comida mensuales en promedio. Además del servicio de la calle, llevamos apoyo a personas enfermas y nos reunimos como comunidad de oración todos los martes a las 7:30 p.m. en la Parroquia San Benito, 701 W 77th St, Hialeah, FL 33014.',
     grupos: [

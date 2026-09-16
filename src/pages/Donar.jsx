@@ -7,6 +7,8 @@ import { API_URL } from '../config'
 
 const CAMPOS_INICIALES = { cedula: '', nombre: '', direccion: '', correo: '', telefono: '', valor: '', concepto: '' }
 
+const TITULAR_DEFAULT = 'DONUM CHRISTI COMUNIDAD APOSTOLICA SERVIDORES DEL SERVIDOR HIJOS DI PADRE PIO'
+
 export default function Donar() {
   const { slug } = useParams()
   const ciudad = CIUDADES[slug]
@@ -91,25 +93,23 @@ export default function Donar() {
       <PageBanner title={`Dona en ${ciudad.nombre}`} img={ciudad.banner} />
 
       <section className="px-[72px] py-[70px]">
-        <div className={`max-w-[1000px] mx-auto grid ${cb ? 'grid-cols-2 gap-16' : 'grid-cols-1'}`}>
-          {cb && (
-            <div>
-              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-5">
-                Datos para transferir
-              </h2>
-              <div className="space-y-2.5 text-[15px] text-brand-ink-muted mb-6">
-                <p><span className="font-semibold text-brand-blue">Banco:</span> {cb.banco}</p>
-                <p><span className="font-semibold text-brand-blue">Cuenta de {cb.tipo}:</span> {cb.numero}</p>
-                <p><span className="font-semibold text-brand-blue">A nombre de:</span> {cb.titular}</p>
-                {cb.llaveBreB && (
-                  <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb.llaveBreB}</p>
-                )}
-              </div>
-              {cb.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[180px]" />}
+        <div className="max-w-[1000px] mx-auto grid grid-cols-2 gap-16">
+          <div>
+            <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-5">
+              Datos para transferir
+            </h2>
+            <div className="space-y-2.5 text-[15px] text-brand-ink-muted mb-6">
+              <p><span className="font-semibold text-brand-blue">Banco:</span> {cb?.banco || 'Próximamente'}</p>
+              <p><span className="font-semibold text-brand-blue">Cuenta de {cb?.tipo || 'Ahorros'}:</span> {cb?.numero || 'Próximamente'}</p>
+              <p><span className="font-semibold text-brand-blue">A nombre de:</span> {cb?.titular || TITULAR_DEFAULT}</p>
+              {(cb?.llaveBreB || !cb) && (
+                <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb?.llaveBreB || 'Próximamente'}</p>
+              )}
             </div>
-          )}
+            {cb?.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[180px]" />}
+          </div>
 
-          <div className={cb ? '' : 'max-w-[500px] mx-auto w-full'}>
+          <div>
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-3">
               Cuéntanos tu donación
             </h2>
@@ -131,7 +131,7 @@ export default function Donar() {
                 {campo('correo', 'Correo electrónico', 'email')}
                 {campo('telefono', 'Teléfono', 'tel')}
                 {campo('valor', 'Valor donado', 'number')}
-                {campo('concepto', '¿A qué quieres que apliquemos tu donación?', 'text', true, 'Ej: Comedor, Canelazo, obra general...')}
+                {campo('concepto', '¿A qué quieres que apliquemos tu donación?')}
 
                 <SelectorComprobante
                   url={comprobanteUrl}
