@@ -13,7 +13,7 @@ export const CIUDADES = {
       numero: '379-641966-49',
       titular: 'DONUM CHRISTI COMUNIDAD APOSTOLICA SERVIDORES DEL SERVIDOR HIJOS DI PADRE PIO',
       llaveBreB: '@medellin',
-      qr: null, // pendiente: imagen del QR
+      qr: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/QRs/qr-medellin.png',
     },
     historia: {
       titulo: 'Nuestra Historia: Una Semilla de Fe',
@@ -138,6 +138,74 @@ export const CIUDADES = {
             telefono: '319 505 1354',
             horario: 'Lunes y jueves, 6:00 p.m.',
             fotos: ['/images/bogota-canelazo.png'],
+          },
+        ],
+      },
+    ],
+  },
+
+  bucaramanga: {
+    nombre: 'Bucaramanga',
+    banner: '/images/ciudad-bucaramanga.jpg',
+    subtitulo: 'Historia de los Servidores del Servidor en la provincia de Bucaramanga',
+    intro:
+      'El nacimiento de la comunidad Servidores del Servidor se gestó oficialmente el 1 de noviembre del año 2003. En ese mismo momento también el cielo quiso que se fundara una rama de la comunidad en la ciudad de Bucaramanga. El encuentro fue uno de los más grandes regalos de Papá Dios, puesto que permitió que los servidores provenientes de Bogotá realizaran un retiro en Piedecuesta, Santander, lugar donde se ubicaba en ese entonces la Comunidad de los Ermitaños Eucarísticos del Padre Celestial junto con su fundador, el Padre Antonio Lootens. El Padre Lootens, iluminado por el Espíritu Santo, reconoció en ellos la espiritualidad del Padre Pío y no solo los acogió, sino que les ofreció su apoyo y dirección para consolidar esta comunidad naciente tanto en Bogotá como en Bucaramanga.',
+    grupos: [
+      {
+        titulo: 'Nuestras Obras en Bucaramanga',
+        puntos: [
+          {
+            nombre: 'Caminantes del Padre Pío',
+            coordinador: 'Olga Lucía Romero Quiñonez',
+            direccion: '10 con Cra 6, parque principal de Piedecuesta, Santander',
+            telefono: '318 481 7078',
+            fotos: ['/images/buc-caminantes.jpg'],
+          },
+          {
+            nombre: 'Punto San Juan de la Cruz',
+            coordinador: 'Gabriel Calderón Sánchez',
+            direccion: 'Cra 5 entre calles 11 y 12, Piedecuesta, Santander',
+            telefono: '315 673 0814',
+            fotos: ['/images/buc-san-juan-cruz.jpg'],
+          },
+          {
+            nombre: 'San Francisco de Asís',
+            coordinador: 'Edyth Vargas',
+            direccion: 'Parque principal de Piedecuesta, Santander',
+            telefono: '316 431 3864',
+            fotos: ['/images/buc-san-francisco.jpg'],
+          },
+          {
+            nombre: 'Santa Teresa de Ávila',
+            coordinador: 'Diana Guevara',
+            direccion: 'Coliseo Villaconcha, frente a la plaza campesina, Piedecuesta, Santander',
+            telefono: '317 728 9332',
+            fotos: ['/images/buc-santa-teresa.jpg'],
+          },
+          {
+            nombre: 'Punto Nuestra Señora de Guadalupe',
+            coordinador: 'Aura Consuelo Almeida Díaz',
+            direccion: 'Bucaramanga',
+            fotos: ['/images/buc-guadalupe.jpg'],
+          },
+          {
+            nombre: 'Punto Madre Laura Montoya',
+            coordinador: 'Bárbara Gómez G.',
+            direccion: 'Cra 15 con calle 24',
+            telefono: '300 222 2974 / 316 248 9913',
+            fotos: ['/images/buc-madre-laura.jpg'],
+          },
+          {
+            nombre: 'Punto San Jorge',
+            descripcion:
+              'Está ubicado en la carrera 30 con 14. Contactos: Gladys Marcela Duarte (Carrera 30 # 14-71), Claudia Patricia Duarte (Carrera 29 # 17-44), Lucila Vargas (Carrera 28 # 16-61).',
+            fotos: ['/images/buc-san-jorge.jpg'],
+          },
+          {
+            nombre: 'Punto de Servicio Divino Niño',
+            descripcion:
+              'Ubicado en la calle 63 con carrera 28, frente al parque de Saludcoop y el conjunto residencial Conucos en Bucaramanga.',
+            fotos: ['/images/buc-divino-nino.jpg'],
           },
         ],
       },
