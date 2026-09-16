@@ -10,12 +10,12 @@ const QUOTES = [
 const OBRAS_CARDS = [
   {
     title: 'Quiénes Somos',
-    img: '/images/quienes-somos.jpg',
+    img: '/images/qs-banner.jpg',
     to: '/quienes-somos',
   },
   {
     title: 'Espiritualidad',
-    img: '/images/espiritualidad.jpg',
+    img: '/images/esp-banner.jpg',
     to: '/espiritualidad',
   },
   {
@@ -83,15 +83,15 @@ export default function Home() {
         <div className="max-w-[1296px] mx-auto">
           <div className="grid grid-cols-3 gap-10 mb-16">
             {OBRAS_CARDS.map((card) => (
-              <Link key={card.title} to={card.to} className="group block">
-                <div className="overflow-hidden mb-5 aspect-[4/5]">
-                  <img
-                    src={card.img}
-                    alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+              <Link key={card.title} to={card.to} className="group block relative overflow-hidden aspect-[4/5]">
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/40 to-transparent pt-16 pb-5 px-5">
+                  <h3 className="font-serif-display text-[22px] text-white font-medium">{card.title}</h3>
                 </div>
-                <h3 className="font-serif-display text-[22px] text-brand-blue font-medium">{card.title}</h3>
               </Link>
             ))}
           </div>
