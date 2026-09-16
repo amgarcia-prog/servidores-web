@@ -18,6 +18,11 @@ const OBRAS_CARDS = [
     img: '/images/espiritualidad.jpg',
     to: '/espiritualidad',
   },
+  {
+    title: 'Obras',
+    img: '/images/obras-calle.jpg',
+    to: '/obras',
+  },
 ]
 
 const PUBLICACIONES = [
@@ -76,11 +81,7 @@ export default function Home() {
       {/* NUESTRAS OBRAS — fotos reales + las tres citas del Padre Pío */}
       <section className="px-[72px] pb-[120px]">
         <div className="max-w-[1296px] mx-auto">
-          <div className="mb-14 border-b border-brand-border pb-6">
-            <h2 className="font-serif-display text-[30px] text-brand-blue font-medium">Nuestras Obras</h2>
-          </div>
-
-          <div className="grid grid-cols-2 gap-10 mb-16">
+          <div className="grid grid-cols-3 gap-10 mb-16">
             {OBRAS_CARDS.map((card) => (
               <Link key={card.title} to={card.to} className="group block">
                 <div className="overflow-hidden mb-5 aspect-[4/5]">
