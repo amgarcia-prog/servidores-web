@@ -49,6 +49,15 @@ export default function Home() {
     <>
       <Carousel />
 
+      <section className="px-[72px] pt-[60px] pb-4 text-center">
+        <Link
+          to="/donde-estamos"
+          className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
+        >
+          Dona aquí
+        </Link>
+      </section>
+
       {/* NUESTRA PRIORIDAD — misión, texto completo */}
       <section className="px-[72px] pt-[100px] pb-[120px]">
         <div className="max-w-[900px] mx-auto text-center">
