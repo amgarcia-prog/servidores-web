@@ -22,7 +22,7 @@ const PAISES = [
   },
   {
     pais: 'Paraguay',
-    ciudades: [{ nombre: 'Villarrica del Espíritu Santo', img: null }],
+    ciudades: [{ nombre: 'Villarrica del Espíritu Santo', img: '/images/py-villarica.jpg', slug: 'paraguay' }],
   },
 ]
 

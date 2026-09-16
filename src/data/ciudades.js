@@ -198,6 +198,55 @@ export const CIUDADES = {
     },
   },
 
+  paraguay: {
+    nombre: 'Villarrica del Espíritu Santo',
+    banner: '/images/py-villarica.jpg',
+    intro:
+      'La comunidad Servidores del Servidor tuvo presencia en Paraguay, expresamente en la localidad de Villarrica, cuando un joven llamado Matías Martínez en el año 2011 se sintió llamado por el Espíritu y reconoció la obra de Padre Pío mediante un programa de Pepe Alonso del canal católico EWTN en el cual entrevistó al fundador de la comunidad, Jorge Andrade. El hermano Matías realizó durante dos años los trámites para poder acoger el servicio en su país, y todos sus esfuerzos dieron fruto en el año 2013, días antes de la JMJ en Río (Jornada Mundial de la Juventud). De este maravilloso encuentro el hermano Matías nos comparte: "Lo más hermoso que nunca se borrará de nuestra mente fue cuando nuestro fundador sacó del bolsillo una monedita de 50 gs. (la moneda de menos valor aquí en Paraguay) y nos la entregó diciéndonos: he aquí la primera semillita de la Comunidad, cuídenla y recuerden que esto dará mucho fruto". Posteriormente los jóvenes de Paraguay viajaron a la JMJ y allí se incentivaron los deseos de consolidar la comunidad en Paraguay, comenzando el servicio con los hermanos necesitados que viven en las calles, compartiendo con ellos el evangelio y una merienda una vez a la semana. A pedido del párroco de Villarrica, se fundó un punto de servicio en la cárcel de menores; al principio fue difícil, pero luego se fueron creando lazos de confianza a través de pequeñas dinámicas. Unos meses más tarde se consagró como servidor el hermano Matías durante el Capítulo General de la comunidad en Bogotá, Colombia, y unos días antes los servidores de Paraguay recibieron una gran donación para fundar un comedor, el cual inició con 35 niños en situación de riesgo. En el año 2015, tras el anuncio de la visita del Papa Francisco a Paraguay, se fundó el punto "San Juan Pablo II". La visita del Santo Padre fue un acontecimiento maravilloso para la comunidad, que hoy en día cuenta con 17 Servidores pacientes y 30 Servidores Laboriosos en Paraguay.',
+    grupos: [
+      {
+        titulo: 'Nuestras Obras en Paraguay',
+        puntos: [
+          {
+            nombre: 'Casa Padre Pío Alivio del Sufrimiento',
+            descripcion:
+              'Lugar donde nuestros hermanos miseritos reciben un plato de comida más el alimento espiritual a través de catequesis dirigidas especialmente a niños. Cada sábado, además del comedor de niños, se realizan atención médica y odontológica gratuitas para niños y personas en situación de calle.',
+            horario: 'Sábados, 8:00 a.m. (comedor) · Jueves, 9:00 a.m. (odontología)',
+            telefono: 'Matías Martínez +595 986 940920 / Ingrid Orrego +595 984 293531',
+            fotos: ['/images/py-casa-padre-pio.jpg'],
+          },
+          {
+            nombre: 'Punto de Servicio San Juan Pablo II',
+            descripcion:
+              'Ubicado en el Barrio Centro, en los lugares donde se encuentran habitantes de la calle, se provee alimento material y especialmente el espiritual a través de la Palabra de Dios.',
+            horario: 'Viernes, 8:00 p.m.',
+            fotos: ['/images/py-san-juan-pablo.jpg'],
+          },
+          {
+            nombre: 'Punto de Servicio Sembrador',
+            descripcion:
+              'Funciona en el Centro Educativo Sembrador, más conocido como la cárcel de menores. Cada domingo se lleva a 60 jóvenes un mensaje de esperanza a través del Evangelio, la catequesis y actividades grupales y deportivas que ayudan a su reinserción en la sociedad.',
+            horario: 'Domingos',
+            fotos: ['/images/py-sembrador.jpg'],
+          },
+        ],
+      },
+      {
+        titulo: 'Puntos de Reunión para el Servicio',
+        puntos: [
+          {
+            nombre: 'Comedor Chiquitunga',
+            descripcion: 'Salón Parroquial de la Catedral de Villarrica, ubicado sobre las calles Natalicio Talavera c/ Joaquín Estigarribia.',
+            horario: 'Domingos, 7:00 a.m.',
+            direccion:
+              'Encargados: Cristóbal Amadit (+595 975 495322), Williams Vázquez (+595 982 599342, williamspy96@gmail.com)',
+            fotos: ['/images/py-villarica.jpg'],
+          },
+        ],
+      },
+    ],
+  },
+
   bucaramanga: {
     nombre: 'Bucaramanga',
     banner: '/images/ciudad-bucaramanga.jpg',
