@@ -6,6 +6,7 @@ export const CIUDADES = {
     subtitulo: 'Comunidad Hijos de Padre Pío: Un Latido de Amor en el Corazón de Medellín',
     banner: '/images/ciudad-medellin.jpg',
     whatsapp: '573016730620',
+    whatsappDisplay: '+57 301 673 0620',
     cuentaBancaria: {
       banco: 'Bancolombia',
       tipo: 'Ahorros',
@@ -54,5 +55,36 @@ export const CIUDADES = {
       texto:
         'Nuestra comunidad no solo entrega alimento o vestuario; entrega el amor de Cristo hecho servicio. Cada voluntario y cada donación son el motor que nos permite seguir habitando las calles de nuestra ciudad con un mensaje de restauración y paz. Te invitamos a ser parte de esta familia. Porque, como nos enseñó el Padre Pío, en cada hermano necesitado está el rostro de nuestro Señor esperando ser reconocido.',
     },
+  },
+
+  tulua: {
+    nombre: 'Tuluá',
+    banner: '/images/ciudad-tulua.jpg',
+    enConstruccion: true,
+    correoContacto: 'administracion@servidoresdelservidor.org',
+  },
+  barranquilla: {
+    nombre: 'Barranquilla',
+    banner: '/images/ciudad-barranquilla.jpg',
+    enConstruccion: true,
+    correoContacto: 'administracion@servidoresdelservidor.org',
+  },
+  neiva: {
+    nombre: 'Neiva',
+    banner: '/images/ciudad-neiva.jpg',
+    enConstruccion: true,
+    correoContacto: 'administracion@servidoresdelservidor.org',
+  },
+  cucuta: {
+    nombre: 'San José de Cúcuta',
+    banner: '/images/ciudad-cucuta.webp',
+    enConstruccion: true,
+    correoContacto: 'administracion@servidoresdelservidor.org',
+  },
+  cartagena: {
+    nombre: 'Cartagena',
+    banner: '/images/ciudad-cartagena.jpg',
+    enConstruccion: true,
+    correoContacto: 'administracion@servidoresdelservidor.org',
   },
 }

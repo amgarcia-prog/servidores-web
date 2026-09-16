@@ -38,9 +38,30 @@ export default function Ciudad() {
     )
   }
 
-  const waHref = `https://wa.me/${ciudad.whatsapp}?text=${encodeURIComponent(
-    `¡Servido sea Jesucristo! Quisiera más información sobre el servicio en ${ciudad.nombre}.`
-  )}`
+  if (ciudad.enConstruccion) {
+    return (
+      <>
+        <PageBanner title={ciudad.nombre} img={ciudad.banner} />
+        <section className="px-[72px] py-[120px] text-center">
+          <p className="max-w-[600px] mx-auto text-[17px] leading-[1.8] text-brand-ink-muted mb-6">
+            Página en construcción. Para mayor información, por favor escribir al correo:
+          </p>
+          <a
+            href={`mailto:${ciudad.correoContacto}`}
+            className="text-[16px] font-semibold text-brand-blue border-b-2 border-brand-terracotta pb-1"
+          >
+            {ciudad.correoContacto}
+          </a>
+        </section>
+      </>
+    )
+  }
+
+  const waHref = ciudad.whatsapp
+    ? `https://wa.me/${ciudad.whatsapp}?text=${encodeURIComponent(
+        `¡Servido sea Jesucristo! Quisiera más información sobre el servicio en ${ciudad.nombre}.`
+      )}`
+    : null
 
   return (
     <>
@@ -154,25 +175,38 @@ export default function Ciudad() {
       )}
 
       {/* CONTACTO */}
-      <section className="px-[72px] py-[70px] bg-brand-blue text-center">
-        <div className="max-w-[600px] mx-auto">
-          <h2 className="font-serif-display text-[26px] text-white font-medium mb-4">
-            Contáctanos en {ciudad.nombre}
-          </h2>
-          <p className="text-[15px] leading-[1.7] text-brand-border mb-6">
-            Escríbenos por WhatsApp y con gusto te contamos cómo puedes servir o recibir ayuda.
-          </p>
-          <a
-            href={waHref}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2.5 px-[26px] py-3.5 bg-[#25D366] text-white font-semibold text-[15px] hover:bg-[#1EBE5A] transition-colors"
-          >
-            <WhatsAppIcon />
-            +57 301 673 0620
-          </a>
-        </div>
-      </section>
+      {(waHref || ciudad.correoContacto) && (
+        <section className="px-[72px] py-[70px] bg-brand-blue text-center">
+          <div className="max-w-[600px] mx-auto">
+            <h2 className="font-serif-display text-[26px] text-white font-medium mb-4">
+              Contáctanos en {ciudad.nombre}
+            </h2>
+            <p className="text-[15px] leading-[1.7] text-brand-border mb-6">
+              {waHref
+                ? 'Escríbenos por WhatsApp y con gusto te contamos cómo puedes servir o recibir ayuda.'
+                : 'Escríbenos y con gusto te contamos cómo puedes servir o recibir ayuda.'}
+            </p>
+            {waHref ? (
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 px-[26px] py-3.5 bg-[#25D366] text-white font-semibold text-[15px] hover:bg-[#1EBE5A] transition-colors"
+              >
+                <WhatsAppIcon />
+                {ciudad.whatsappDisplay || ciudad.whatsapp}
+              </a>
+            ) : (
+              <a
+                href={`mailto:${ciudad.correoContacto}`}
+                className="inline-flex items-center gap-2.5 px-[26px] py-3.5 bg-white text-brand-blue font-semibold text-[15px] hover:bg-brand-cream transition-colors"
+              >
+                {ciudad.correoContacto}
+              </a>
+            )}
+          </div>
+        </section>
+      )}
     </>
   )
 }
