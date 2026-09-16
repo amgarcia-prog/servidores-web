@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
+import SelectorComprobante from '../components/SelectorComprobante'
 import { CIUDADES } from '../data/ciudades'
 import { API_URL } from '../config'
 
@@ -10,7 +11,9 @@ export default function Donar() {
   const { slug } = useParams()
   const ciudad = CIUDADES[slug]
   const [form, setForm] = useState(CAMPOS_INICIALES)
+  const [comprobanteUrl, setComprobanteUrl] = useState('')
   const [estado, setEstado] = useState('idle') // idle | enviando | ok | error
+  const [error, setError] = useState('')
 
   if (!ciudad || !ciudad.cuentaBancaria) {
     return (
@@ -46,6 +49,11 @@ export default function Donar() {
 
   const enviar = async (e) => {
     e.preventDefault()
+    setError('')
+    if (!comprobanteUrl) {
+      setError('Adjunta el comprobante de la transferencia antes de enviar.')
+      return
+    }
     setEstado('enviando')
     try {
       const res = await fetch(`${API_URL}/api/financiero/reportes-donacion`, {
@@ -59,16 +67,20 @@ export default function Donar() {
           correo: form.correo,
           telefono: form.telefono,
           valor: Number(form.valor),
+          comprobante_url: comprobanteUrl,
         }),
       }).then((r) => r.json())
       if (res.ok) {
         setEstado('ok')
         setForm(CAMPOS_INICIALES)
+        setComprobanteUrl('')
       } else {
-        setEstado('error')
+        setEstado('idle')
+        setError('No se pudo enviar, intenta de nuevo.')
       }
     } catch {
-      setEstado('error')
+      setEstado('idle')
+      setError('No se pudo enviar, intenta de nuevo.')
     }
   }
 
@@ -116,6 +128,12 @@ export default function Donar() {
                 {campo('telefono', 'Teléfono', 'tel')}
                 {campo('valor', 'Valor donado', 'number')}
 
+                <SelectorComprobante
+                  url={comprobanteUrl}
+                  onChange={setComprobanteUrl}
+                  onError={(m) => setError(m)}
+                />
+
                 <button
                   type="submit"
                   disabled={estado === 'enviando'}
@@ -123,9 +141,7 @@ export default function Donar() {
                 >
                   {estado === 'enviando' ? 'Enviando...' : 'Ya transferí, notificar'}
                 </button>
-                {estado === 'error' && (
-                  <p className="text-[13px] text-red-600">No se pudo enviar, intenta de nuevo.</p>
-                )}
+                {error && <p className="text-[13px] text-red-600">{error}</p>}
               </form>
             )}
           </div>
