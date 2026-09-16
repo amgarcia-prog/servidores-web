@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
 import { CIUDADES } from '../data/ciudades'
-import { API_URL } from '../config'
 
 function WhatsAppIcon() {
   return (
@@ -16,114 +14,6 @@ function WhatsAppIcon() {
         fill="currentColor"
       />
     </svg>
-  )
-}
-
-function DonarSection({ ciudad }) {
-  const cb = ciudad.cuentaBancaria
-  const [form, setForm] = useState({ nombre: '', valor: '', telefono: '' })
-  const [estado, setEstado] = useState('idle') // idle | enviando | ok | error
-
-  if (!cb) return null
-
-  const enviar = async (e) => {
-    e.preventDefault()
-    if (!form.nombre || !form.valor) return
-    setEstado('enviando')
-    try {
-      const res = await fetch(`${API_URL}/api/financiero/reportes-donacion`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ciudad: ciudad.nombre,
-          nombre_donante: form.nombre,
-          telefono: form.telefono || null,
-          valor: Number(form.valor),
-        }),
-      }).then((r) => r.json())
-      if (res.ok) {
-        setEstado('ok')
-        setForm({ nombre: '', valor: '', telefono: '' })
-      } else {
-        setEstado('error')
-      }
-    } catch {
-      setEstado('error')
-    }
-  }
-
-  return (
-    <section className="px-[72px] py-[60px] bg-white">
-      <div className="max-w-[1000px] mx-auto grid grid-cols-2 gap-14">
-        <div>
-          <div className="text-xs font-semibold tracking-[0.2em] uppercase text-brand-terracotta mb-4">
-            Dona aquí
-          </div>
-          <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-5">
-            Tu donación sostiene el servicio en {ciudad.nombre}
-          </h2>
-          <div className="space-y-2.5 text-[15px] text-brand-ink-muted mb-6">
-            <p><span className="font-semibold text-brand-blue">Banco:</span> {cb.banco}</p>
-            <p><span className="font-semibold text-brand-blue">Cuenta de {cb.tipo}:</span> {cb.numero}</p>
-            <p><span className="font-semibold text-brand-blue">A nombre de:</span> {cb.titular}</p>
-            {cb.llaveBreB && (
-              <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb.llaveBreB}</p>
-            )}
-          </div>
-          {cb.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[160px]" />}
-        </div>
-
-        <div>
-          <p className="text-[14px] text-brand-ink-muted mb-4">
-            Después de transferir, cuéntanos aquí para que quede registrado de nuestro lado:
-          </p>
-          {estado === 'ok' ? (
-            <div className="p-5 bg-brand-cream border border-brand-border">
-              <p className="text-[15px] text-brand-blue font-medium">
-                ¡Gracias por tu donación! Ya quedó reportada.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={enviar} className="space-y-3">
-              <input
-                type="text"
-                placeholder="Tu nombre *"
-                value={form.nombre}
-                onChange={(e) => setForm((f) => ({ ...f, nombre: e.target.value }))}
-                required
-                className="w-full border border-brand-border px-4 py-2.5 text-[14px] focus:outline-none focus:border-brand-blue"
-              />
-              <input
-                type="number"
-                placeholder="Valor donado *"
-                value={form.valor}
-                onChange={(e) => setForm((f) => ({ ...f, valor: e.target.value }))}
-                required
-                min="1"
-                className="w-full border border-brand-border px-4 py-2.5 text-[14px] focus:outline-none focus:border-brand-blue"
-              />
-              <input
-                type="tel"
-                placeholder="Teléfono (opcional)"
-                value={form.telefono}
-                onChange={(e) => setForm((f) => ({ ...f, telefono: e.target.value }))}
-                className="w-full border border-brand-border px-4 py-2.5 text-[14px] focus:outline-none focus:border-brand-blue"
-              />
-              <button
-                type="submit"
-                disabled={estado === 'enviando'}
-                className="w-full px-[26px] py-3 bg-brand-terracotta text-white font-semibold text-[14px] hover:bg-[#9c5525] transition-colors disabled:opacity-60"
-              >
-                {estado === 'enviando' ? 'Enviando...' : 'Ya transferí, notificar'}
-              </button>
-              {estado === 'error' && (
-                <p className="text-[13px] text-red-600">No se pudo enviar, intenta de nuevo.</p>
-              )}
-            </form>
-          )}
-        </div>
-      </div>
-    </section>
   )
 }
 
@@ -156,7 +46,16 @@ export default function Ciudad() {
     <>
       <PageBanner title={ciudad.nombre} img={ciudad.banner} />
 
-      <DonarSection ciudad={ciudad} />
+      {ciudad.cuentaBancaria && (
+        <section className="px-[72px] pt-[60px] pb-4 text-center">
+          <Link
+            to={`/donde-estamos/${slug}/donar`}
+            className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
+          >
+            Dona aquí
+          </Link>
+        </section>
+      )}
 
       {ciudad.subtitulo && (
         <section className="px-[72px] pt-[60px] pb-4 text-center">
