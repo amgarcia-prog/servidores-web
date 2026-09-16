@@ -104,7 +104,7 @@ export default function Donar() {
             {estado === 'ok' ? (
               <div className="p-5 bg-brand-cream border border-brand-border">
                 <p className="text-[15px] text-brand-blue font-medium">
-                  ¡Gracias por tu donación! En breve te enviaremos tu recibo.
+                  ¡Gracias por tu donación! Oportunamente te enviaremos tu recibo.
                 </p>
               </div>
             ) : (
