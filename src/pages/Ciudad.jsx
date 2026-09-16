@@ -41,8 +41,16 @@ export default function Ciudad() {
   if (ciudad.enConstruccion) {
     return (
       <>
-        <PageBanner title={ciudad.nombre} img={ciudad.banner} />
-        <section className="px-[72px] py-[120px] text-center">
+        <PageBanner title={`Nuestra Comunidad en ${ciudad.nombre}`} img={ciudad.banner} />
+        <section className="px-[72px] pt-[60px] pb-4 text-center">
+          <Link
+            to={`/donde-estamos/${slug}/donar`}
+            className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
+          >
+            Dona aquí para los servicios de {ciudad.nombre}
+          </Link>
+        </section>
+        <section className="px-[72px] py-[80px] text-center">
           <p className="max-w-[600px] mx-auto text-[17px] leading-[1.8] text-brand-ink-muted mb-6">
             Página en construcción. Para mayor información, por favor escribir al correo:
           </p>
@@ -65,18 +73,16 @@ export default function Ciudad() {
 
   return (
     <>
-      <PageBanner title={ciudad.nombre} img={ciudad.banner} />
+      <PageBanner title={`Nuestra Comunidad en ${ciudad.nombre}`} img={ciudad.banner} />
 
-      {ciudad.cuentaBancaria && (
-        <section className="px-[72px] pt-[60px] pb-4 text-center">
-          <Link
-            to={`/donde-estamos/${slug}/donar`}
-            className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
-          >
-            Dona aquí para los servicios de {ciudad.nombre}
-          </Link>
-        </section>
-      )}
+      <section className="px-[72px] pt-[60px] pb-4 text-center">
+        <Link
+          to={`/donde-estamos/${slug}/donar`}
+          className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
+        >
+          Dona aquí para los servicios de {ciudad.nombre}
+        </Link>
+      </section>
 
       {ciudad.subtitulo && (
         <section className="px-[72px] pt-[60px] pb-4 text-center">
@@ -182,6 +188,36 @@ export default function Ciudad() {
           )}
         </div>
       </section>
+
+      {/* DONACIONES */}
+      {ciudad.donaciones && (
+        <section className="px-[72px] py-[60px] bg-white">
+          <div className="max-w-[1000px] mx-auto grid grid-cols-2 gap-14">
+            {ciudad.donaciones.especie?.length > 0 && (
+              <div>
+                <h3 className="font-serif-display text-[21px] text-brand-blue font-medium mb-4">
+                  Donaciones en especie
+                </h3>
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[14px] text-brand-ink-muted">
+                  {ciudad.donaciones.especie.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {ciudad.donaciones.monetariasTexto && (
+              <div>
+                <h3 className="font-serif-display text-[21px] text-brand-blue font-medium mb-4">
+                  Donaciones monetarias
+                </h3>
+                <p className="text-[14px] leading-[1.8] text-brand-ink-muted whitespace-pre-line">
+                  {ciudad.donaciones.monetariasTexto}
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* CIERRE */}
       {ciudad.cierre && (

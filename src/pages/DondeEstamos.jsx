@@ -18,7 +18,7 @@ const PAISES = [
   },
   {
     pais: 'Estados Unidos',
-    ciudades: [{ nombre: 'Miami', img: '/images/ciudad-miami.jpg' }],
+    ciudades: [{ nombre: 'Miami', img: '/images/ciudad-miami.jpg', slug: 'miami' }],
   },
   {
     pais: 'Paraguay',

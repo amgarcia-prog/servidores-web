@@ -5,7 +5,7 @@ import SelectorComprobante from '../components/SelectorComprobante'
 import { CIUDADES } from '../data/ciudades'
 import { API_URL } from '../config'
 
-const CAMPOS_INICIALES = { cedula: '', nombre: '', direccion: '', correo: '', telefono: '', valor: '' }
+const CAMPOS_INICIALES = { cedula: '', nombre: '', direccion: '', correo: '', telefono: '', valor: '', concepto: '' }
 
 export default function Donar() {
   const { slug } = useParams()
@@ -15,7 +15,7 @@ export default function Donar() {
   const [estado, setEstado] = useState('idle') // idle | enviando | ok | error
   const [error, setError] = useState('')
 
-  if (!ciudad || !ciudad.cuentaBancaria) {
+  if (!ciudad) {
     return (
       <section className="px-[72px] py-[120px] text-center">
         <h1 className="font-serif-display text-[28px] text-brand-blue font-medium mb-4">
@@ -32,7 +32,7 @@ export default function Donar() {
   }
 
   const cb = ciudad.cuentaBancaria
-  const campo = (key, label, tipo = 'text', requerido = true) => (
+  const campo = (key, label, tipo = 'text', requerido = true, placeholder = '') => (
     <div>
       <label className="block text-[13px] text-brand-ink-muted mb-1.5">
         {label} {requerido && '*'}
@@ -42,6 +42,7 @@ export default function Donar() {
         value={form[key]}
         onChange={(e) => setForm((f) => ({ ...f, [key]: e.target.value }))}
         required={requerido}
+        placeholder={placeholder}
         className="w-full border border-brand-border px-4 py-2.5 text-[14px] focus:outline-none focus:border-brand-blue"
       />
     </div>
@@ -67,6 +68,7 @@ export default function Donar() {
           correo: form.correo,
           telefono: form.telefono,
           valor: Number(form.valor),
+          concepto: form.concepto,
           comprobante_url: comprobanteUrl,
         }),
       }).then((r) => r.json())
@@ -89,23 +91,25 @@ export default function Donar() {
       <PageBanner title={`Dona en ${ciudad.nombre}`} img={ciudad.banner} />
 
       <section className="px-[72px] py-[70px]">
-        <div className="max-w-[1000px] mx-auto grid grid-cols-2 gap-16">
-          <div>
-            <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-5">
-              Datos para transferir
-            </h2>
-            <div className="space-y-2.5 text-[15px] text-brand-ink-muted mb-6">
-              <p><span className="font-semibold text-brand-blue">Banco:</span> {cb.banco}</p>
-              <p><span className="font-semibold text-brand-blue">Cuenta de {cb.tipo}:</span> {cb.numero}</p>
-              <p><span className="font-semibold text-brand-blue">A nombre de:</span> {cb.titular}</p>
-              {cb.llaveBreB && (
-                <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb.llaveBreB}</p>
-              )}
+        <div className={`max-w-[1000px] mx-auto grid ${cb ? 'grid-cols-2 gap-16' : 'grid-cols-1'}`}>
+          {cb && (
+            <div>
+              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-5">
+                Datos para transferir
+              </h2>
+              <div className="space-y-2.5 text-[15px] text-brand-ink-muted mb-6">
+                <p><span className="font-semibold text-brand-blue">Banco:</span> {cb.banco}</p>
+                <p><span className="font-semibold text-brand-blue">Cuenta de {cb.tipo}:</span> {cb.numero}</p>
+                <p><span className="font-semibold text-brand-blue">A nombre de:</span> {cb.titular}</p>
+                {cb.llaveBreB && (
+                  <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb.llaveBreB}</p>
+                )}
+              </div>
+              {cb.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[180px]" />}
             </div>
-            {cb.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[180px]" />}
-          </div>
+          )}
 
-          <div>
+          <div className={cb ? '' : 'max-w-[500px] mx-auto w-full'}>
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-3">
               Cuéntanos tu donación
             </h2>
@@ -127,6 +131,7 @@ export default function Donar() {
                 {campo('correo', 'Correo electrónico', 'email')}
                 {campo('telefono', 'Teléfono', 'tel')}
                 {campo('valor', 'Valor donado', 'number')}
+                {campo('concepto', '¿A qué quieres que apliquemos tu donación?', 'text', true, 'Ej: Comedor, Canelazo, obra general...')}
 
                 <SelectorComprobante
                   url={comprobanteUrl}

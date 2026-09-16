@@ -7,7 +7,7 @@ export default function PageBanner({ title, img }) {
           <div className="absolute inset-0 bg-brand-blue/70" />
         </>
       )}
-      <h1 className="relative font-serif-display text-[38px] text-white font-medium tracking-tight">{title}</h1>
+      <h1 className="relative font-serif-display text-[38px] text-white font-medium tracking-tight text-center px-8 max-w-[900px]">{title}</h1>
     </section>
   )
 }

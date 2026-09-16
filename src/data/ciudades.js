@@ -144,6 +144,60 @@ export const CIUDADES = {
     ],
   },
 
+  miami: {
+    nombre: 'Miami',
+    banner: '/images/ciudad-miami.jpg',
+    whatsapp: '13057468465',
+    whatsappDisplay: '+1 305 746 8465',
+    intro:
+      'En Miami la comunidad comienza en noviembre del 2012, nos reunimos la noche de acción de gracias, acogiéndonos al llamado que nos hizo nuestro Señor. Desde ese día todas las semanas nos reunimos a preparar los alimentos y al día siguiente se los repartimos a nuestros hermanitos más necesitados, en la calle, en los diferentes puntos de servicio del sur de la Florida. Entregamos alrededor de 1.200 combos de comida mensuales en promedio. Además del servicio de la calle, llevamos apoyo a personas enfermas y nos reunimos como comunidad de oración todos los martes a las 7:30 p.m. en la Parroquia San Benito, 701 W 77th St, Hialeah, FL 33014.',
+    grupos: [
+      {
+        titulo: 'Nuestras Obras en Miami',
+        puntos: [
+          {
+            nombre: 'Servicio a Homeless — Downtown Miami',
+            descripcion:
+              'Nos reunimos afuera de la iglesia de Gesú, iniciando con oración y trasladándonos a los puntos de servicio "La Misericordia": Los Puentes (Bridge Point) y Casa Amarilla (Yellow House Point). Proveemos comida (sándwich y postre), agua, ropa y llevamos amor junto con la Palabra de Dios.',
+            direccion: '118 NE 2nd St, Miami, FL 33132 (Iglesia de Gesú)',
+            horario: 'Domingos, 7:30 a.m.',
+            fotos: ['/images/miami-downtown.jpg'],
+          },
+          {
+            nombre: 'Servicio a Homeless — Homestead',
+            descripcion:
+              'Nos reunimos afuera de la parroquia del Sagrado Corazón, iniciando con oración y trasladándonos a los puntos de servicio, donde proveemos comida (sándwich y postre), agua, ropa y llevamos amor junto con la Palabra de Dios.',
+            direccion: 'Sacred Heart Church, Homestead, FL',
+            horario: 'Domingos, 7:30 a.m.',
+            fotos: ['/images/miami-homestead.jpg'],
+          },
+          {
+            nombre: 'Punto de Servicio Francisco',
+            descripcion: 'Servicio en la calle Mowry.',
+            direccion: 'Sacred Heart Church, 106 SE 2nd Rd, Homestead, FL 33030',
+            fotos: ['/images/miami-francisco.jpg'],
+          },
+          {
+            nombre: 'Preparación de los Alimentos y Ropa',
+            descripcion:
+              'Todos los sábados nos reunimos en diferentes grupos para la preparación de los alimentos y organización de ropa.',
+            telefono: '+1 305 746 8465',
+            fotos: ['/images/miami-preparacion.jpg'],
+          },
+        ],
+      },
+    ],
+    donaciones: {
+      especie: [
+        'Pan', 'Mantequilla', 'Jamón en rebanadas', 'Queso en rebanadas', 'Galletas', 'Aguas',
+        'Bolsas de papel', 'Bolsas de basura de 13 galones', 'Mantel plástico', 'Guantes',
+        'Bolsas plásticas de sándwiches', 'Artículos de aseo personal', 'Ropa y zapatos',
+      ],
+      monetariasTexto:
+        'Wells Fargo Bank, N.A. — Cuenta Corriente (Cheques) No. 7575178319, a nombre de DONUM CHRISTI SERVIDORES DEL SERVIDOR.\n\nTambién aceptamos donaciones por Cash App, PayPal, Venmo (servidores del servidor) y tarjetas de crédito.\n\nCoordinadora Provincial Miami: Dulce Zuloaga — +1 305 746 8465 — servidoresdelservidormiami@gmail.com',
+    },
+  },
+
   bucaramanga: {
     nombre: 'Bucaramanga',
     banner: '/images/ciudad-bucaramanga.jpg',
