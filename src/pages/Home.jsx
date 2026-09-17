@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Carousel from '../components/Carousel'
+import { API_URL } from '../config'
 
 const QUOTES = [
   '"El Corazón de Nuestro Divino Maestro no conoce otra ley que la de la dulzura, la humildad y del amor".',
@@ -25,31 +27,16 @@ const OBRAS_CARDS = [
   },
 ]
 
-const PUBLICACIONES = [
-  {
-    title: 'Asamblea Servidores del Servidor',
-    excerpt:
-      '¡Servido sea Jesucristo! Con alegría en el Señor, queremos compartirles e invitarles a unirnos en fe y oración a la Asamblea General 2025 que se llevará […]',
-    img: '/images/noticia-asamblea.jpg',
-    href: 'https://servidoresdelservidor.org/saludonavidad/',
-  },
-  {
-    title: 'Día Santo Padre Pío 2024',
-    excerpt:
-      '¡Servido sea Jesucristo! Con gozo y alegría la comunidad apostólica Servidores del Servidor queremos hacerles participe de la fiesta en honor a nuestro Santo Patrono, el […]',
-    img: '/images/noticia-padre-pio.jpg',
-    href: 'https://servidoresdelservidor.org/celebracionpadrepio/',
-  },
-  {
-    title: 'VII Encuentro Torreta',
-    excerpt:
-      'Servido sea Jesucristo Queridos hermanos, compartimos un vídeo muy especial para ti. Esperamos que te alegre y motive para vivir nuestro VII […]',
-    img: '/images/noticia-torreta.jpg',
-    href: 'https://servidoresdelservidor.org/asambleaservidores/',
-  },
-]
-
 export default function Home() {
+  const [publicaciones, setPublicaciones] = useState([])
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/publicaciones`)
+      .then((r) => r.json())
+      .then((data) => setPublicaciones(Array.isArray(data) ? data.slice(0, 3) : []))
+      .catch(() => {})
+  }, [])
+
   return (
     <>
       <Carousel />
@@ -107,36 +94,36 @@ export default function Home() {
       </section>
 
       {/* ULTIMAS PUBLICACIONES */}
-      <section className="px-[72px] pb-[120px]">
-        <div className="max-w-[1296px] mx-auto">
-          <div className="flex items-baseline justify-between mb-12 border-b border-brand-border pb-6">
-            <h2 className="font-serif-display text-[30px] text-brand-blue font-medium">Últimas publicaciones</h2>
-            <a
-              href="https://servidoresdelservidor.org/noticias/"
-              className="text-xs font-semibold tracking-[0.04em] uppercase border-b-2 border-brand-terracotta pb-1"
-            >
-              Ver todas
-            </a>
-          </div>
+      {publicaciones.length > 0 && (
+        <section className="px-[72px] pb-[120px]">
+          <div className="max-w-[1296px] mx-auto">
+            <div className="mb-12 border-b border-brand-border pb-6">
+              <h2 className="font-serif-display text-[30px] text-brand-blue font-medium">Últimas publicaciones</h2>
+            </div>
 
-          <div className="grid grid-cols-3 gap-10">
-            {PUBLICACIONES.map((post) => (
-              <article key={post.title}>
-                <div className="h-[220px] mb-5 overflow-hidden">
-                  <img src={post.img} alt={post.title} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="font-serif-display text-[20px] text-brand-blue font-medium mb-3 leading-[1.3]">
-                  {post.title}
-                </h3>
-                <p className="text-[14px] leading-[1.7] text-brand-ink-muted mb-4">{post.excerpt}</p>
-                <a href={post.href} className="text-[13px] font-semibold">
-                  Leer más →
-                </a>
-              </article>
-            ))}
+            <div className="grid grid-cols-3 gap-10">
+              {publicaciones.map((post) => (
+                <article key={post.id}>
+                  {post.imagen_url && (
+                    <div className="h-[220px] mb-5 overflow-hidden">
+                      <img src={post.imagen_url} alt={post.titulo} className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  <h3 className="font-serif-display text-[20px] text-brand-blue font-medium mb-3 leading-[1.3]">
+                    {post.titulo}
+                  </h3>
+                  <p className="text-[14px] leading-[1.7] text-brand-ink-muted mb-4">{post.extracto}</p>
+                  {post.enlace && (
+                    <a href={post.enlace} className="text-[13px] font-semibold">
+                      Leer más →
+                    </a>
+                  )}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   )
 }
