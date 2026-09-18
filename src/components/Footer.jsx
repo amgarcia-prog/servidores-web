@@ -28,9 +28,6 @@ export default function Footer() {
         <Link to="/biblioteca" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
           Biblioteca
         </Link>
-        <Link to="/publicaciones" className="text-[13px] text-white bg-brand-terracotta font-semibold px-4 py-2 hover:bg-[#9c5525] transition-colors">
-          Publicaciones
-        </Link>
         <Link to="/contactenos" className="text-[13px] text-brand-ink-muted font-medium hover:text-brand-terracotta transition-colors">
           Contáctenos
         </Link>

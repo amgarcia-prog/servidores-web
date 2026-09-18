@@ -33,7 +33,7 @@ export default function Home() {
   useEffect(() => {
     fetch(`${API_URL}/api/publicaciones`)
       .then((r) => r.json())
-      .then((data) => setPublicaciones(Array.isArray(data) ? data.slice(0, 3) : []))
+      .then((data) => setPublicaciones(Array.isArray(data) ? data : []))
       .catch(() => {})
   }, [])
 
@@ -93,12 +93,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ULTIMAS PUBLICACIONES */}
+      {/* PUBLICACIONES */}
       {publicaciones.length > 0 && (
         <section className="px-[72px] pb-[120px]">
           <div className="max-w-[1296px] mx-auto">
             <div className="mb-12 border-b border-brand-border pb-6">
-              <h2 className="font-serif-display text-[30px] text-brand-blue font-medium">Últimas publicaciones</h2>
+              <h2 className="font-serif-display text-[30px] text-brand-blue font-medium">Publicaciones</h2>
             </div>
 
             <div className="grid grid-cols-3 gap-10">

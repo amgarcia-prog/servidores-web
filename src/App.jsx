@@ -12,7 +12,6 @@ import PadrePio from './pages/PadrePio'
 import DondeEstamos from './pages/DondeEstamos'
 import Ciudad from './pages/Ciudad'
 import Donar from './pages/Donar'
-import Publicaciones from './pages/Publicaciones'
 import Biblioteca from './pages/Biblioteca'
 import BibliotecaOracion from './pages/BibliotecaOracion'
 import BibliotecaDocumentos from './pages/BibliotecaDocumentos'
@@ -37,7 +36,6 @@ export default function App() {
             <Route path="/donde-estamos" element={<DondeEstamos />} />
             <Route path="/donde-estamos/:slug" element={<Ciudad />} />
             <Route path="/donde-estamos/:slug/donar" element={<Donar />} />
-            <Route path="/publicaciones" element={<Publicaciones />} />
             <Route path="/biblioteca" element={<Biblioteca />} />
             <Route path="/biblioteca/oracion" element={<BibliotecaOracion />} />
             <Route path="/biblioteca/documentos" element={<BibliotecaDocumentos />} />
