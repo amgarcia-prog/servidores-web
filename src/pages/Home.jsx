@@ -105,8 +105,8 @@ export default function Home() {
               {publicaciones.map((post) => (
                 <article key={post.id}>
                   {post.imagen_url && (
-                    <div className="h-[220px] mb-5 overflow-hidden">
-                      <img src={post.imagen_url} alt={post.titulo} className="w-full h-full object-cover" />
+                    <div className="h-[220px] mb-5 overflow-hidden bg-white flex items-center justify-center">
+                      <img src={post.imagen_url} alt={post.titulo} className="w-full h-full object-contain" />
                     </div>
                   )}
                   <h3 className="font-serif-display text-[20px] text-brand-blue font-medium mb-3 leading-[1.3]">
