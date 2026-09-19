@@ -116,12 +116,12 @@ export default function Home() {
             >
               Regístrate en el sistema
             </a>
-            <span
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-border text-brand-ink-muted font-semibold text-[14px] opacity-60 cursor-not-allowed"
-              title="Próximamente"
+            <a
+              href="https://formacion.servidoresdelservidor.org/"
+              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
             >
               Formación
-            </span>
+            </a>
           </div>
         </div>
       </section>
