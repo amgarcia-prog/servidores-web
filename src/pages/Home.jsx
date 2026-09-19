@@ -53,36 +53,6 @@ export default function Home() {
         </p>
       </section>
 
-      {/* ZONA DE SERVIDORES */}
-      <section className="px-[72px] pt-[60px]">
-        <div className="max-w-[700px] mx-auto text-center border border-brand-border px-8 py-10">
-          <h2 className="font-serif-display text-[22px] text-brand-blue font-medium mb-2">Zona de Servidores</h2>
-          <p className="text-[14px] text-brand-ink-muted mb-6">
-            Si ya eres parte de la comunidad, ingresa para ver o actualizar tu información. Si aún no te has registrado, hazlo aquí.
-          </p>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
-            <a
-              href="https://appsds.vercel.app/login"
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
-            >
-              Ingresa al sistema
-            </a>
-            <a
-              href="https://appsds.vercel.app"
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
-            >
-              Regístrate en el sistema
-            </a>
-            <span
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-border text-brand-ink-muted font-semibold text-[14px] opacity-60 cursor-not-allowed"
-              title="Próximamente"
-            >
-              Formación
-            </span>
-          </div>
-        </div>
-      </section>
-
       {/* NUESTRA PRIORIDAD — misión, texto completo */}
       <section className="px-[72px] pt-[100px] pb-[120px]">
         <div className="max-w-[900px] mx-auto text-center">
@@ -122,6 +92,36 @@ export default function Home() {
                 {q}
               </p>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ZONA DE SERVIDORES */}
+      <section className="px-[72px] pb-[120px]">
+        <div className="max-w-[700px] mx-auto text-center border border-brand-border px-8 py-10">
+          <h2 className="font-serif-display text-[22px] text-brand-blue font-medium mb-2">Zona de Servidores</h2>
+          <p className="text-[14px] text-brand-ink-muted mb-6">
+            Si ya eres parte de la comunidad, ingresa para ver o actualizar tu información. Si aún no te has registrado, hazlo aquí.
+          </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <a
+              href="https://appsds.vercel.app/login"
+              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
+            >
+              Ingresa al sistema
+            </a>
+            <a
+              href="https://appsds.vercel.app"
+              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
+            >
+              Regístrate en el sistema
+            </a>
+            <span
+              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-border text-brand-ink-muted font-semibold text-[14px] opacity-60 cursor-not-allowed"
+              title="Próximamente"
+            >
+              Formación
+            </span>
           </div>
         </div>
       </section>
