@@ -6,15 +6,15 @@ const GRUPOS = [
     recursos: [
       {
         titulo: 'Reglamento de consejos de ciudades (Incluye funciones)',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2026/04/Reglamento-de-Consejos-de-Ciudades-V2-Octubre-26-2025.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022350615.pdf',
       },
       {
         titulo: 'Formato de acta de reunión',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2026/05/Formato-acta-de-reuniones-de-consejos.docx',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022351856.docx',
       },
       {
         titulo: 'Formato de planeación anual de actividades',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2026/02/Calendario-anual-2026.xlsx',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022352583.xlsx',
       },
     ],
   },
@@ -23,11 +23,11 @@ const GRUPOS = [
     recursos: [
       {
         titulo: 'Estatutos de la comunidad',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/ESTATUTOS-COMUNIDAD-DECRETO-152-AGTO202021.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022354745.pdf',
       },
       {
         titulo: 'Reglamento de la comunidad',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/REGLAMENTO-COMUNIDAD-SERVIDORES.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022355909.pdf',
       },
     ],
   },
@@ -36,11 +36,11 @@ const GRUPOS = [
     recursos: [
       {
         titulo: 'Protocolo de comedor',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2026/02/PROTOCOLO-DE-COMEDORES-2024.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022356698.pdf',
       },
       {
         titulo: 'Protocolo servicio de recorrido (canelazo)',
-        href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/PROTOCOLO-SERVICIOS-DE-RECORRIDO-CANELAZO-SDS.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022357574.pdf',
       },
     ],
   },
