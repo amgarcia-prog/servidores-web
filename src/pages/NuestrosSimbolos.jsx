@@ -50,24 +50,27 @@ export default function NuestrosSimbolos() {
 
       {/* Cruz Eucaristica */}
       <section className="px-[72px] py-[60px]">
-        <div className="max-w-[900px] mx-auto">
-          <h2 className="font-serif-display text-[26px] text-brand-blue font-medium mb-5">Cruz Eucarística</h2>
-          <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">
-            <p>
-              Elaborada de dos tipos de madera que se encontraban en el huerto de los olivos. Tiene en el
-              centro una hostia rodeada por 14 rayos que simbolizan las 7 obras de misericordia materiales y
-              las 7 obras de misericordia espirituales. Su forma es de cruz latina, usada antiguamente en la
-              edificación de iglesias y catedrales. Del centro se desprenden hacia los cuatro puntos de la
-              cruz, como granos de trigo que se extienden hacía los cuatro puntos cardinales, y que
-              representan la presencia de los servidores en todo el mundo, que son como semillas y que dan
-              abundante fruto.
-            </p>
-            <p>
-              Por el respaldo de la cruz se encuentra en un pequeño orificio un pedazo de tela. Alrededor la
-              inscripción “Ex Indumentatis Di Padre Pio” que significa una parte del hábito de Padre Pío. En
-              la parte inferior una “M” atravesada por una cruz (Símbolo Mariano) y dos corazones que
-              simbolizan la presencia perenne de la Virgen María en la vida de un servidor.
-            </p>
+        <div className="max-w-[1100px] mx-auto grid grid-cols-[0.8fr_1.2fr] gap-14 items-center">
+          <img src="/images/simbolo-cruz-eucaristica.jpg" alt="Cruz Eucarística" className="w-full object-contain" />
+          <div>
+            <h2 className="font-serif-display text-[26px] text-brand-blue font-medium mb-5">Cruz Eucarística</h2>
+            <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">
+              <p>
+                Elaborada de dos tipos de madera que se encontraban en el huerto de los olivos. Tiene en el
+                centro una hostia rodeada por 14 rayos que simbolizan las 7 obras de misericordia materiales y
+                las 7 obras de misericordia espirituales. Su forma es de cruz latina, usada antiguamente en la
+                edificación de iglesias y catedrales. Del centro se desprenden hacia los cuatro puntos de la
+                cruz, como granos de trigo que se extienden hacía los cuatro puntos cardinales, y que
+                representan la presencia de los servidores en todo el mundo, que son como semillas y que dan
+                abundante fruto.
+              </p>
+              <p>
+                Por el respaldo de la cruz se encuentra en un pequeño orificio un pedazo de tela. Alrededor la
+                inscripción “Ex Indumentatis Di Padre Pio” que significa una parte del hábito de Padre Pío. En
+                la parte inferior una “M” atravesada por una cruz (Símbolo Mariano) y dos corazones que
+                simbolizan la presencia perenne de la Virgen María en la vida de un servidor.
+              </p>
+            </div>
           </div>
         </div>
       </section>

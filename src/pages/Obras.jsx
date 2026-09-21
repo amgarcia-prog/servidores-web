@@ -71,14 +71,10 @@ export default function Obras() {
             </div>
           </section>
           {i === 1 && (
-            <div className="h-[380px] overflow-hidden">
-              <img src="/images/obras-panel-1.jpg" alt="" className="w-full h-full object-cover" />
-            </div>
+            <img src="/images/obras-panel-1.jpg" alt="" className="w-full h-auto block" />
           )}
           {i === 2 && (
-            <div className="h-[380px] overflow-hidden">
-              <img src="/images/obras-panel-2.jpg" alt="" className="w-full h-full object-cover" />
-            </div>
+            <img src="/images/obras-panel-2.jpg" alt="" className="w-full h-auto block" />
           )}
         </div>
       ))}
