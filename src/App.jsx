@@ -14,6 +14,7 @@ import Ciudad from './pages/Ciudad'
 import Donar from './pages/Donar'
 import Biblioteca from './pages/Biblioteca'
 import BibliotecaOracion from './pages/BibliotecaOracion'
+import BibliotecaLectio from './pages/BibliotecaLectio'
 import BibliotecaDocumentos from './pages/BibliotecaDocumentos'
 import BibliotecaGlosario from './pages/BibliotecaGlosario'
 import Contactenos from './pages/Contactenos'
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/donde-estamos/:slug/donar" element={<Donar />} />
             <Route path="/biblioteca" element={<Biblioteca />} />
             <Route path="/biblioteca/oracion" element={<BibliotecaOracion />} />
+            <Route path="/biblioteca/oracion/lectio-servicio" element={<BibliotecaLectio />} />
             <Route path="/biblioteca/documentos" element={<BibliotecaDocumentos />} />
             <Route path="/biblioteca/glosario" element={<BibliotecaGlosario />} />
             <Route path="/contactenos" element={<Contactenos />} />

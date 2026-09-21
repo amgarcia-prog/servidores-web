@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
 
 const GRUPOS = [
@@ -33,7 +34,7 @@ const NOVENA_PADRE_PIO = [
 ]
 
 const SIMPLES = [
-  { titulo: 'Lectio del Servicio', href: 'https://servidoresdelservidor.org/lectioservicio/' },
+  { titulo: 'Lectio del Servicio', href: '/biblioteca/oracion/lectio-servicio' },
   {
     titulo: 'Novena María Madre de los Servidores',
     href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-a-Maria-Madre-de-los-Servidores-Agosto-6-2025-1.pdf',
@@ -53,11 +54,12 @@ const SIMPLES = [
 ]
 
 function Enlace({ titulo, href }) {
+  const interno = href.startsWith('/')
+  const Tag = interno ? Link : 'a'
+  const tagProps = interno ? { to: href } : { href, target: '_blank', rel: 'noreferrer' }
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
+    <Tag
+      {...tagProps}
       className="flex items-center justify-between py-5 gap-6 group"
     >
       <span className="font-serif-display text-[19px] text-brand-blue group-hover:text-brand-terracotta transition-colors">
@@ -66,7 +68,7 @@ function Enlace({ titulo, href }) {
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-brand-blue group-hover:text-brand-terracotta transition-colors">
         <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-    </a>
+    </Tag>
   )
 }
 
@@ -78,7 +80,7 @@ export default function BibliotecaOracion() {
         <div className="max-w-[900px] mx-auto space-y-12">
           {GRUPOS.map((grupo) => (
             <div key={grupo.titulo}>
-              <h2 className="font-serif-display text-[22px] text-brand-blue font-medium mb-4 pb-3 border-b border-brand-border">
+              <h2 className="font-serif-display text-[19px] text-white font-medium mb-4 px-5 py-3 bg-brand-blue">
                 {grupo.titulo}
               </h2>
               <div className="divide-y divide-brand-border border-b border-brand-border">
@@ -90,7 +92,7 @@ export default function BibliotecaOracion() {
           ))}
 
           <div>
-            <h2 className="font-serif-display text-[22px] text-brand-blue font-medium mb-4 pb-3 border-b border-brand-border">
+            <h2 className="font-serif-display text-[19px] text-white font-medium mb-4 px-5 py-3 bg-brand-blue">
               Novena de Padre Pío
             </h2>
             <div className="divide-y divide-brand-border border-b border-brand-border">

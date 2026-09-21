@@ -54,7 +54,7 @@ export default function BibliotecaDocumentos() {
         <div className="max-w-[900px] mx-auto space-y-12">
           {GRUPOS.map((grupo) => (
             <div key={grupo.titulo}>
-              <h2 className="font-serif-display text-[22px] text-brand-blue font-medium mb-4 pb-3 border-b border-brand-border">
+              <h2 className="font-serif-display text-[19px] text-white font-medium mb-4 px-5 py-3 bg-brand-blue">
                 {grupo.titulo}
               </h2>
               <div className="divide-y divide-brand-border border-b border-brand-border">
