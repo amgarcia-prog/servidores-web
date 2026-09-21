@@ -106,7 +106,7 @@ export default function Donar() {
                 <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb?.llaveBreB || 'Próximamente'}</p>
               )}
             </div>
-            {cb?.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[180px]" />}
+            {cb?.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[320px]" />}
           </div>
 
           <div>
