@@ -66,6 +66,10 @@ export default function Historia() {
         </div>
       </PageSection>
 
+      <div className="h-[380px] overflow-hidden">
+        <img src="/images/historia-panel.jpg" alt="" className="w-full h-full object-cover" />
+      </div>
+
       <PageSection>
         <p>
           Por voluntad de Dios, la comunidad Servidores del Servidor se ha extendido a otras ciudades de

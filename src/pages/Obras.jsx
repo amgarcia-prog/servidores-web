@@ -50,25 +50,37 @@ export default function Obras() {
       </section>
 
       {OBRAS.map((obra, i) => (
-        <section key={obra.title} className="px-[72px] py-[60px]">
-          <div
-            className="max-w-[1100px] mx-auto grid grid-cols-2 gap-14 items-center"
-          >
-            <div className={i % 2 === 1 ? 'order-2' : ''}>
-              <img src={obra.img} alt={obra.title} className="w-full aspect-[4/3] object-cover" />
-            </div>
-            <div className={i % 2 === 1 ? 'order-1' : ''}>
-              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
-                {obra.title}
-              </h2>
-              <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">
-                {obra.text.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
+        <div key={obra.title}>
+          <section className="px-[72px] py-[60px]">
+            <div
+              className="max-w-[1100px] mx-auto grid grid-cols-2 gap-14 items-center"
+            >
+              <div className={i % 2 === 1 ? 'order-2' : ''}>
+                <img src={obra.img} alt={obra.title} className="w-full aspect-[4/3] object-cover" />
+              </div>
+              <div className={i % 2 === 1 ? 'order-1' : ''}>
+                <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
+                  {obra.title}
+                </h2>
+                <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">
+                  {obra.text.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+          {i === 1 && (
+            <div className="h-[380px] overflow-hidden">
+              <img src="/images/obras-panel-1.jpg" alt="" className="w-full h-full object-cover" />
+            </div>
+          )}
+          {i === 2 && (
+            <div className="h-[380px] overflow-hidden">
+              <img src="/images/obras-panel-2.jpg" alt="" className="w-full h-full object-cover" />
+            </div>
+          )}
+        </div>
       ))}
     </>
   )

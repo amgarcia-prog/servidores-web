@@ -54,8 +54,10 @@ export default function Home() {
       </section>
 
       {/* NUESTRA PRIORIDAD — misión, texto completo */}
-      <section className="px-[72px] pt-[100px] pb-[120px]">
-        <div className="max-w-[900px] mx-auto text-center">
+      <section className="relative px-[72px] pt-[100px] pb-[120px] overflow-hidden">
+        <img src="/images/home-cielo.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-brand-cream/60" />
+        <div className="relative max-w-[900px] mx-auto text-center">
           <p className="font-serif-display text-[26px] leading-[1.6] text-brand-blue">
             Nuestra prioridad es el servicio al más necesitado. Aquellos a quienes la sociedad les ha
             negado el amor y la dignidad humana que se merecen. Pueden ser pobres o ricos y nosotros los
