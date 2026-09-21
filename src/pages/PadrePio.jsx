@@ -122,7 +122,7 @@ export default function PadrePio() {
           </div>
 
           <a
-            href="http://www.padrepio.catholicwebservices.com/ESPANOL/Biografia.htm"
+            href="https://padrepio.catholicwebservices.com/ESPANOL/Biografia.htm"
             target="_blank"
             rel="noreferrer"
             className="clear-both inline-flex items-center gap-2.5 mt-8 px-[30px] py-3.5 border border-brand-blue text-brand-blue font-semibold text-[15px] hover:bg-brand-blue hover:text-brand-cream transition-colors"
