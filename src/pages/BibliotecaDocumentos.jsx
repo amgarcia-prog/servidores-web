@@ -6,15 +6,15 @@ const GRUPOS = [
     recursos: [
       {
         titulo: 'Reglamento de consejos de ciudades (Incluye funciones)',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022350615.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Reglamento-Consejos-Ciudades.pdf',
       },
       {
         titulo: 'Formato de acta de reunión',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022351856.docx',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Formato-acta-reunion.docx',
       },
       {
         titulo: 'Formato de planeación anual de actividades',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022352583.xlsx',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Calendario-anual-2026.xlsx',
       },
     ],
   },
@@ -23,11 +23,11 @@ const GRUPOS = [
     recursos: [
       {
         titulo: 'Estatutos de la comunidad',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022354745.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Estatutos-Comunidad.pdf',
       },
       {
         titulo: 'Reglamento de la comunidad',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022355909.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Reglamento-Comunidad.pdf',
       },
     ],
   },
@@ -36,11 +36,11 @@ const GRUPOS = [
     recursos: [
       {
         titulo: 'Protocolo de comedor',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022356698.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Protocolo-Comedores.pdf',
       },
       {
         titulo: 'Protocolo servicio de recorrido (canelazo)',
-        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/1790022357574.pdf',
+        href: 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/documentos/Protocolo-Canelazo.pdf',
       },
     ],
   },
