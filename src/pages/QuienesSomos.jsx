@@ -25,6 +25,10 @@ export default function QuienesSomos() {
         </p>
       </PageSection>
 
+      <div className="h-[380px] overflow-hidden">
+        <img src="/images/qs-panel-calle.jpg" alt="" className="w-full h-full object-cover" />
+      </div>
+
       <PageSection eyebrow="Nuestro carisma" className="bg-white">
         <p>
           El carisma que sustenta y da vida a la comunidad se llama “servicio”. Siguiendo los pasos de San
@@ -33,6 +37,10 @@ export default function QuienesSomos() {
           muchos.
         </p>
       </PageSection>
+
+      <div className="h-[380px] overflow-hidden">
+        <img src="/images/qs-panel-grupo.jpg" alt="" className="w-full h-full object-cover" />
+      </div>
 
       <section className="px-[72px] py-[70px]">
         <div className="max-w-[900px] mx-auto grid grid-cols-2 gap-12">
@@ -58,6 +66,10 @@ export default function QuienesSomos() {
           </div>
         </div>
       </section>
+
+      <div className="h-[380px] overflow-hidden">
+        <img src="/images/qs-panel-servicio.jpg" alt="" className="w-full h-full object-cover" />
+      </div>
 
       <PageSection eyebrow="¿Dónde queremos estar?" className="bg-white">
         <div className="grid grid-cols-4 gap-6">
