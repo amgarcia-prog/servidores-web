@@ -49,6 +49,9 @@ export default function PadrePio() {
               de 1916 llegó al convento de San Giovanni Rotondo, sobre el Gargano, dónde se quedó hasta el
               23 de septiembre de 1968, día de su sentida muerte.
             </p>
+            <div className="float-right ml-10 mb-6 w-[220px]">
+              <img src="/images/padre-pio-mayor.jpg" alt="Padre Pío" className="w-full" />
+            </div>
             <p>
               En este largo período el Padre Pío iniciaba sus días despertándose por la noche, muy antes del
               alba, se dedicaba a la oración con gran fervor aprovechando la soledad y silencio de la noche.
@@ -72,6 +75,9 @@ export default function PadrePio() {
               mi crucifixión? ¡Mi Dios que confusión y que humillación yo tengo el deber de manifestar lo
               que Tú has obrado en esta tu mezquina criatura!
             </p>
+            <div className="float-right ml-10 mb-6 w-[220px]">
+              <img src="/images/padre-pio-misa.jpg" alt="Padre Pío celebrando la Santa Misa" className="w-full" />
+            </div>
             <p>
               Fue la mañana del 20 del pasado mes (septiembre) en coro, después de la celebración de la
               Santa Misa, cuando fui sorprendido por el descanso en el espíritu, parecido a un dulce sueño.
