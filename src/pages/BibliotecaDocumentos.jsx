@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PageBanner from '../components/PageBanner'
 
 const GRUPOS = [
@@ -47,36 +48,52 @@ const GRUPOS = [
 ]
 
 export default function BibliotecaDocumentos() {
+  const [abierto, setAbierto] = useState(null)
+
   return (
     <>
       <PageBanner title="Documentos" />
       <section className="px-[72px] py-[70px]">
-        <div className="max-w-[900px] mx-auto space-y-12">
-          {GRUPOS.map((grupo) => (
-            <div key={grupo.titulo}>
-              <h2 className="font-serif-display text-[19px] text-white font-medium mb-4 px-5 py-3 bg-brand-blue">
-                {grupo.titulo}
-              </h2>
-              <div className="divide-y divide-brand-border border-b border-brand-border">
-                {grupo.recursos.map((r) => (
-                  <a
-                    key={r.titulo}
-                    href={r.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-between py-5 gap-6 group"
+        <div className="max-w-[900px] mx-auto space-y-4">
+          {GRUPOS.map((grupo) => {
+            const estaAbierto = abierto === grupo.titulo
+            return (
+              <div key={grupo.titulo}>
+                <button
+                  onClick={() => setAbierto(estaAbierto ? null : grupo.titulo)}
+                  className="w-full flex items-center justify-between font-serif-display text-[19px] text-white font-medium px-5 py-3 bg-brand-blue"
+                >
+                  {grupo.titulo}
+                  <svg
+                    width="14" height="14" viewBox="0 0 16 16" fill="none"
+                    className={`flex-shrink-0 transition-transform ${estaAbierto ? 'rotate-180' : ''}`}
                   >
-                    <span className="font-serif-display text-[19px] text-brand-blue group-hover:text-brand-terracotta transition-colors">
-                      {r.titulo}
-                    </span>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-brand-blue group-hover:text-brand-terracotta transition-colors">
-                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                ))}
+                    <path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                {estaAbierto && (
+                  <div className="divide-y divide-brand-border border-b border-x border-brand-border">
+                    {grupo.recursos.map((r) => (
+                      <a
+                        key={r.titulo}
+                        href={r.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center justify-between px-5 py-5 gap-6 group"
+                      >
+                        <span className="font-serif-display text-[19px] text-brand-blue group-hover:text-brand-terracotta transition-colors">
+                          {r.titulo}
+                        </span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-brand-blue group-hover:text-brand-terracotta transition-colors">
+                          <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
     </>
