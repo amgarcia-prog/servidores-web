@@ -39,7 +39,7 @@ export default function Obras() {
     <>
       <PageBanner title="Nuestras Obras" />
 
-      <section className="px-[72px] pt-[70px] pb-6">
+      <section className="px-6 lg:px-[72px] pt-10 lg:pt-[70px] pb-6">
         <p className="max-w-[900px] mx-auto text-[18px] leading-[1.8] text-brand-blue font-serif-display italic text-center">
           Como poblaciones vulnerables nos dedicamos a la caridad con el pobre, con el habitante de calle,
           con los niños de bajos recursos, con los abuelitos abandonados y con las trabajadoras sexuales. A
@@ -51,9 +51,9 @@ export default function Obras() {
 
       {OBRAS.map((obra, i) => (
         <div key={obra.title}>
-          <section className="px-[72px] py-[60px]">
+          <section className="px-6 lg:px-[72px] py-10 lg:py-[60px]">
             <div
-              className="max-w-[1100px] mx-auto grid grid-cols-2 gap-14 items-center"
+              className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-14 items-center"
             >
               <div className={i % 2 === 1 ? 'order-2' : ''}>
                 <img src={obra.img} alt={obra.title} className="w-full aspect-[4/3] object-cover" />

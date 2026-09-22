@@ -17,7 +17,7 @@ export default function BibliotecaLectio() {
   return (
     <>
       <PageBanner title="Lectio del Servicio" />
-      <section className="px-[72px] py-[70px]">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
         <div className="max-w-[900px] mx-auto">
           {cargando ? (
             <p className="text-center text-brand-ink-muted">Cargando...</p>

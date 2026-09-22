@@ -6,9 +6,9 @@ export default function NuestrosSimbolos() {
       <PageBanner title="Nuestros Símbolos" />
 
       {/* Escapulario y Brida */}
-      <section className="px-[72px] py-[60px]">
-        <div className="max-w-[1100px] mx-auto grid grid-cols-[0.8fr_1.2fr] gap-14 items-center">
-          <img src="/images/simbolo-habito.jpg" alt="Escapulario" className="w-full object-contain" />
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[60px]">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-14 items-center">
+          <img src="/images/simbolo-habito.jpg" alt="Escapulario" className="w-full max-w-[280px] mx-auto md:max-w-none object-contain" />
           <div>
             <h2 className="font-serif-display text-[26px] text-brand-blue font-medium mb-5">Escapulario</h2>
             <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">
@@ -30,9 +30,9 @@ export default function NuestrosSimbolos() {
       </section>
 
       {/* Escudo */}
-      <section className="px-[72px] py-[60px] bg-white">
-        <div className="max-w-[1100px] mx-auto grid grid-cols-[0.8fr_1.2fr] gap-14 items-center">
-          <img src="/images/simbolo-escudo.jpg" alt="Escudo" className="w-full object-contain" />
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[60px] bg-white">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-14 items-center">
+          <img src="/images/simbolo-escudo.jpg" alt="Escudo" className="w-full max-w-[280px] mx-auto md:max-w-none object-contain" />
           <div>
             <h2 className="font-serif-display text-[26px] text-brand-blue font-medium mb-5">Escudo</h2>
             <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">
@@ -49,9 +49,9 @@ export default function NuestrosSimbolos() {
       </section>
 
       {/* Cruz Eucaristica */}
-      <section className="px-[72px] py-[60px]">
-        <div className="max-w-[1100px] mx-auto grid grid-cols-[0.8fr_1.2fr] gap-14 items-center">
-          <img src="/images/simbolo-cruz-eucaristica.jpg" alt="Cruz Eucarística" className="w-full object-contain" />
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[60px]">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-14 items-center">
+          <img src="/images/simbolo-cruz-eucaristica.jpg" alt="Cruz Eucarística" className="w-full max-w-[280px] mx-auto md:max-w-none object-contain" />
           <div>
             <h2 className="font-serif-display text-[26px] text-brand-blue font-medium mb-5">Cruz Eucarística</h2>
             <div className="space-y-4 text-[15px] leading-[1.8] text-brand-ink-muted">

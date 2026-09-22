@@ -64,14 +64,14 @@ export default function DondeEstamos() {
     <>
       <PageBanner title="Dónde Estamos" />
 
-      <section className="px-[72px] py-[70px]">
-        <div className="max-w-[1200px] mx-auto space-y-16">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
+        <div className="max-w-[1200px] mx-auto space-y-12 lg:space-y-16">
           {PAISES.map((p) => (
             <div key={p.pais}>
               <h2 className="font-serif-display text-[26px] text-brand-blue font-medium mb-8 pb-4 border-b border-brand-border">
                 {p.pais}
               </h2>
-              <div className="grid grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
                 {p.ciudades.map((c) => (
                   <CiudadCard key={c.nombre} c={c} />
                 ))}

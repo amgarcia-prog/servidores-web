@@ -53,7 +53,7 @@ export default function BibliotecaDocumentos() {
   return (
     <>
       <PageBanner title="Documentos" />
-      <section className="px-[72px] py-[70px]">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
         <div className="max-w-[900px] mx-auto space-y-4">
           {GRUPOS.map((grupo) => {
             const estaAbierto = abierto === grupo.titulo

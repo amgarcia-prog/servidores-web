@@ -12,8 +12,8 @@ export default function Biblioteca() {
     <>
       <PageBanner title="Biblioteca" />
 
-      <section className="px-[72px] py-[70px]">
-        <div className="max-w-[1100px] mx-auto grid grid-cols-3 gap-10">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-10">
           {CATEGORIAS.map((c) => (
             <Link key={c.titulo} to={c.to} className="group block">
               <div className="overflow-hidden mb-5 aspect-[4/3]">

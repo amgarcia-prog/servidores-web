@@ -23,7 +23,7 @@ export default function Ciudad() {
 
   if (!ciudad) {
     return (
-      <section className="px-[72px] py-[120px] text-center">
+      <section className="px-6 lg:px-[72px] py-16 lg:py-[120px] text-center">
         <h1 className="font-serif-display text-[28px] text-brand-blue font-medium mb-4">
           Estamos preparando esta página
         </h1>
@@ -42,7 +42,7 @@ export default function Ciudad() {
     return (
       <>
         <PageBanner title={`Nuestra Comunidad en ${ciudad.nombre}`} img={ciudad.banner} />
-        <section className="px-[72px] pt-[60px] pb-4 text-center">
+        <section className="px-6 lg:px-[72px] pt-[60px] pb-4 text-center">
           <Link
             to={`/donde-estamos/${slug}/donar`}
             className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
@@ -50,7 +50,7 @@ export default function Ciudad() {
             Dona aquí para los servicios de {ciudad.nombre}
           </Link>
         </section>
-        <section className="px-[72px] py-[80px] text-center">
+        <section className="px-6 lg:px-[72px] py-16 lg:py-[80px] text-center">
           <p className="max-w-[600px] mx-auto text-[17px] leading-[1.8] text-brand-ink-muted mb-6">
             Página en construcción. Para mayor información, por favor escribir al correo:
           </p>
@@ -75,7 +75,7 @@ export default function Ciudad() {
     <>
       <PageBanner title={`Nuestra Comunidad en ${ciudad.nombre}`} img={ciudad.banner} />
 
-      <section className="px-[72px] pt-[60px] pb-4 text-center">
+      <section className="px-6 lg:px-[72px] pt-[60px] pb-4 text-center">
         <Link
           to={`/donde-estamos/${slug}/donar`}
           className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
@@ -85,7 +85,7 @@ export default function Ciudad() {
       </section>
 
       {ciudad.subtitulo && (
-        <section className="px-[72px] pt-[60px] pb-4 text-center">
+        <section className="px-6 lg:px-[72px] pt-[60px] pb-4 text-center">
           <p className="max-w-[800px] mx-auto font-serif-display text-[22px] italic text-brand-blue leading-[1.5]">
             {ciudad.subtitulo}
           </p>
@@ -93,7 +93,7 @@ export default function Ciudad() {
       )}
 
       {ciudad.intro && (
-        <section className="px-[72px] pt-[60px] pb-4 text-center">
+        <section className="px-6 lg:px-[72px] pt-[60px] pb-4 text-center">
           <p className="max-w-[800px] mx-auto text-[16px] leading-[1.8] text-brand-ink-muted">
             {ciudad.intro}
           </p>
@@ -102,8 +102,8 @@ export default function Ciudad() {
 
       {/* HISTORIA */}
       {ciudad.historia && (
-        <section className="px-[72px] py-[50px]">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-[1.2fr_1fr] gap-14 items-center">
+        <section className="px-6 lg:px-[72px] py-10 lg:py-[50px]">
+          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 lg:gap-14 items-center">
             <div>
               <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
                 {ciudad.historia.titulo}
@@ -119,8 +119,8 @@ export default function Ciudad() {
 
       {/* LABOR HOY */}
       {ciudad.labor && (
-        <section className="px-[72px] py-[50px] bg-white">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-[1fr_1.2fr] gap-14 items-center">
+        <section className="px-6 lg:px-[72px] py-10 lg:py-[50px] bg-white">
+          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 lg:gap-14 items-center">
             {ciudad.labor.foto && (
               <img src={ciudad.labor.foto} alt={ciudad.labor.titulo} className="w-full aspect-[4/3] object-cover" />
             )}
@@ -135,7 +135,7 @@ export default function Ciudad() {
       )}
 
       {/* DONDE SERVIMOS */}
-      <section className="px-[72px] py-[70px]">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-12 border-b border-brand-border pb-6">
             <h2 className="font-serif-display text-[28px] text-brand-blue font-medium">Dónde servimos</h2>
@@ -154,7 +154,7 @@ export default function Ciudad() {
                       {grupo.titulo}
                     </h3>
                   )}
-                  <div className="grid grid-cols-3 gap-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-10">
                     {grupo.puntos.map((punto) => (
                       <div key={punto.nombre}>
                         {punto.fotos?.length > 0 && (
@@ -191,8 +191,8 @@ export default function Ciudad() {
 
       {/* DONACIONES */}
       {ciudad.donaciones && (
-        <section className="px-[72px] py-[60px] bg-white">
-          <div className="max-w-[1000px] mx-auto grid grid-cols-2 gap-14">
+        <section className="px-6 lg:px-[72px] py-10 lg:py-[60px] bg-white">
+          <div className="max-w-[1000px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-14">
             {ciudad.donaciones.especie?.length > 0 && (
               <div>
                 <h3 className="font-serif-display text-[21px] text-brand-blue font-medium mb-4">
@@ -221,7 +221,7 @@ export default function Ciudad() {
 
       {/* CIERRE */}
       {ciudad.cierre && (
-        <section className="px-[72px] py-[60px] bg-white text-center">
+        <section className="px-6 lg:px-[72px] py-10 lg:py-[60px] bg-white text-center">
           <div className="max-w-[800px] mx-auto">
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
               {ciudad.cierre.titulo}
@@ -233,7 +233,7 @@ export default function Ciudad() {
 
       {/* CONTACTO */}
       {(waHref || ciudad.correoContacto) && (
-        <section className="px-[72px] py-[70px] bg-brand-blue text-center">
+        <section className="px-6 lg:px-[72px] py-10 lg:py-[70px] bg-brand-blue text-center">
           <div className="max-w-[600px] mx-auto">
             <h2 className="font-serif-display text-[26px] text-white font-medium mb-4">
               Contáctanos en {ciudad.nombre}

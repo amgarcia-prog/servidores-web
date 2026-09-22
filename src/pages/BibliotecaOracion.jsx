@@ -104,7 +104,7 @@ export default function BibliotecaOracion() {
   return (
     <>
       <PageBanner title="Oración" />
-      <section className="px-[72px] py-[70px]">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
         <div className="max-w-[900px] mx-auto space-y-4">
           <Categoria titulo="Oraciones diarias - Texto" abierto={abierto === 'texto'} onToggle={() => toggle('texto')}>
             <div className="divide-y divide-brand-border">

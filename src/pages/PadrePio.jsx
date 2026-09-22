@@ -5,7 +5,7 @@ export default function PadrePio() {
     <>
       <PageBanner title="Padre Pío" />
 
-      <section className="px-[72px] py-[70px]">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
         <div className="max-w-[900px] mx-auto">
           <div className="float-right ml-10 mb-6 w-[220px]">
             <img src="/images/padre-pio-retrato.jpg" alt="Padre Pío" className="w-full" />

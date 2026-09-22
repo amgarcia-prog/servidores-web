@@ -50,8 +50,8 @@ export default function Contactenos() {
     <>
       <PageBanner title="Contáctenos" img="/images/contacto-banner.jpg" />
 
-      <section className="px-[72px] py-[70px]">
-        <div className="max-w-[1100px] mx-auto grid grid-cols-[1.2fr_0.8fr] gap-14 items-center mb-16">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-14 items-center mb-10 lg:mb-16">
           <div>
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-6">
               ¿Cómo colaborar o participar de este apostolado?
@@ -68,7 +68,7 @@ export default function Contactenos() {
           <img src="/images/contacto-colaborar.jpeg" alt="" className="w-full object-cover" />
         </div>
 
-        <div className="max-w-[1100px] mx-auto grid grid-cols-[0.8fr_1.2fr] gap-14 items-center mb-16">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-14 items-center mb-10 lg:mb-16">
           <img src="/images/contacto-pertenecer.jpg" alt="" className="w-full object-cover" />
           <div>
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-6">¿Cómo pertenecer?</h2>
@@ -107,7 +107,7 @@ export default function Contactenos() {
             </div>
           ) : (
             <form onSubmit={enviar} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[13px] text-brand-ink-muted mb-1.5">Nombre *</label>
                   <input

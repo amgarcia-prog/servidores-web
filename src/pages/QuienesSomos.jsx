@@ -25,7 +25,7 @@ export default function QuienesSomos() {
         </p>
       </PageSection>
 
-      <div className="h-[380px] overflow-hidden">
+      <div className="h-[200px] lg:h-[380px] overflow-hidden">
         <img src="/images/qs-panel-calle.jpg" alt="" className="w-full h-full object-cover" />
       </div>
 
@@ -38,12 +38,12 @@ export default function QuienesSomos() {
         </p>
       </PageSection>
 
-      <div className="h-[380px] overflow-hidden">
+      <div className="h-[200px] lg:h-[380px] overflow-hidden">
         <img src="/images/qs-panel-grupo.jpg" alt="" className="w-full h-full object-cover" />
       </div>
 
-      <section className="px-[72px] py-[70px]">
-        <div className="max-w-[900px] mx-auto grid grid-cols-2 gap-12">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
+        <div className="max-w-[900px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
           <div>
             <div className="mb-6 overflow-hidden">
               <img src="/images/qs-mision.jpeg" alt="Misión de Servidores del Servidor" className="w-full" />
@@ -67,12 +67,12 @@ export default function QuienesSomos() {
         </div>
       </section>
 
-      <div className="h-[380px] overflow-hidden">
+      <div className="h-[200px] lg:h-[380px] overflow-hidden">
         <img src="/images/qs-panel-servicio.jpg" alt="" className="w-full h-full object-cover" />
       </div>
 
       <PageSection eyebrow="¿Dónde queremos estar?" className="bg-white">
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6">
           <img src="/images/qs-donde-1.jpeg" alt="En toda actividad humanitaria, pero también en el silencio" className="w-full" />
           <img src="/images/qs-donde-2.jpeg" alt="En los sitios de la ciudad en donde están concentrados los hermanos mendicantes" className="w-full" />
           <img src="/images/qs-donde-3.jpeg" alt="En los diferentes grupos de oración y acción pastoral en las parroquias" className="w-full" />

@@ -19,7 +19,7 @@ export default function Donar() {
 
   if (!ciudad) {
     return (
-      <section className="px-[72px] py-[120px] text-center">
+      <section className="px-6 lg:px-[72px] py-16 lg:py-[120px] text-center">
         <h1 className="font-serif-display text-[28px] text-brand-blue font-medium mb-4">
           Aún no tenemos esta opción disponible
         </h1>
@@ -92,8 +92,8 @@ export default function Donar() {
     <>
       <PageBanner title={`Dona en ${ciudad.nombre}`} img={ciudad.banner} />
 
-      <section className="px-[72px] py-[70px]">
-        <div className="max-w-[1000px] mx-auto grid grid-cols-2 gap-16">
+      <section className="px-6 lg:px-[72px] py-10 lg:py-[70px]">
+        <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
           <div>
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-5">
               Datos para transferir
@@ -106,7 +106,7 @@ export default function Donar() {
                 <p><span className="font-semibold text-brand-blue">Llave Bre-B:</span> {cb?.llaveBreB || 'Próximamente'}</p>
               )}
             </div>
-            {cb?.qr && <img src={cb.qr} alt="Código QR para donar" className="w-[320px]" />}
+            {cb?.qr && <img src={cb.qr} alt="Código QR para donar" className="w-full max-w-[320px]" />}
           </div>
 
           <div>
