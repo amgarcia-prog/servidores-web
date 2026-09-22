@@ -3,54 +3,47 @@ import { Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
 import { API_URL } from '../config'
 
+const BIBLIOTECA = 'https://gvdgqwxbkcauephznqfd.supabase.co/storage/v1/object/public/Biblioteca/oraciones'
+
 const ORACIONES_TEXTO = [
-  { titulo: 'Oración al levantarse', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/Oracio%CC%81n-al-levantarse.pdf' },
-  { titulo: 'Oración de Intercesión', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/Oracio%CC%81n-de-Intercesio%CC%81n.pdf' },
-  { titulo: 'Cinco Visitas', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/Las-cinco-Visitas.pdf' },
-  { titulo: 'Oración de la mañana', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/Oracio%CC%81n-de-la-man%CC%83ana.pdf' },
-  { titulo: 'Oración de la noche', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/OracionNoche.png' },
-  { titulo: 'Oración al acostarse', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/OracionAcostarse.png' },
-  { titulo: 'Oración para iniciar el servicio', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/OracionIniciar.png' },
-  { titulo: 'Oración para terminar el servicio', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/OracionTerminar.png' },
-  { titulo: 'Oración al Espíritu Santo', href: 'https://servidoresdelservidor.org/wp-content/uploads/2021/08/OracionEspirituSanto2.pdf' },
-  { titulo: 'Oración de sellamiento', href: 'https://servidoresdelservidor.org/wp-content/uploads/2019/06/OracionSellamiento.png' },
+  { titulo: 'Oración al levantarse', href: `${BIBLIOTECA}/Oracion-Levantarse.pdf` },
+  { titulo: 'Oración de Intercesión', href: `${BIBLIOTECA}/Oracion-Intercesion.pdf` },
+  { titulo: 'Cinco Visitas', href: `${BIBLIOTECA}/Cinco-Visitas.pdf` },
+  { titulo: 'Oración de la mañana', href: `${BIBLIOTECA}/Oracion-Manana.pdf` },
+  { titulo: 'Oración de la noche', href: `${BIBLIOTECA}/Oracion-Noche.png` },
+  { titulo: 'Oración al acostarse', href: `${BIBLIOTECA}/Oracion-Acostarse.png` },
+  { titulo: 'Oración para iniciar el servicio', href: `${BIBLIOTECA}/Oracion-Iniciar-Servicio.png` },
+  { titulo: 'Oración para terminar el servicio', href: `${BIBLIOTECA}/Oracion-Terminar-Servicio.png` },
+  { titulo: 'Oración al Espíritu Santo', href: `${BIBLIOTECA}/Oracion-Espiritu-Santo.pdf` },
+  { titulo: 'Oración de sellamiento', href: `${BIBLIOTECA}/Oracion-Sellamiento.png` },
 ]
 
 const ORACIONES_AUDIO = [
-  { titulo: 'Oración de la mañana - Audio', href: 'https://servidoresdelservidor.org/wp-content/uploads/2020/07/ORACION-DE-LA-MAN%CC%83ANA.mp3' },
-  { titulo: 'Oración de la noche - Audio', href: 'https://servidoresdelservidor.org/wp-content/uploads/2020/07/ORACION-DE-LA-NOCHE.mp3' },
+  { titulo: 'Oración de la mañana - Audio', href: `${BIBLIOTECA}/Oracion-Manana-Audio.mp3` },
+  { titulo: 'Oración de la noche - Audio', href: `${BIBLIOTECA}/Oracion-Noche-Audio.mp3` },
 ]
 
 const NOVENA_PADRE_PIO = [
-  { titulo: 'Día Primero', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Introduccion-y-Dia-uno.pdf' },
-  { titulo: 'Día Segundo', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Nevena-PP-Dia-Dos.pdf' },
-  { titulo: 'Día Tercero', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Tres.pdf' },
-  { titulo: 'Día Cuarto', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Cuatro.pdf' },
-  { titulo: 'Día Quinto', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Quinto.pdf' },
-  { titulo: 'Día Sexto', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Sexto.pdf' },
-  { titulo: 'Día Séptimo', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Septimo.pdf' },
-  { titulo: 'Día Octavo', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Ocavo.pdf' },
-  { titulo: 'Día Noveno', href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-PP-Dia-Noveno.pdf' },
+  { titulo: 'Día Primero', href: `${BIBLIOTECA}/Novena-PadrePio-Dia1.pdf` },
+  { titulo: 'Día Segundo', href: `${BIBLIOTECA}/Novena-PadrePio-Dia2.pdf` },
+  { titulo: 'Día Tercero', href: `${BIBLIOTECA}/Novena-PadrePio-Dia3.pdf` },
+  { titulo: 'Día Cuarto', href: `${BIBLIOTECA}/Novena-PadrePio-Dia4.pdf` },
+  { titulo: 'Día Quinto', href: `${BIBLIOTECA}/Novena-PadrePio-Dia5.pdf` },
+  { titulo: 'Día Sexto', href: `${BIBLIOTECA}/Novena-PadrePio-Dia6.pdf` },
+  { titulo: 'Día Séptimo', href: `${BIBLIOTECA}/Novena-PadrePio-Dia7.pdf` },
+  { titulo: 'Día Octavo', href: `${BIBLIOTECA}/Novena-PadrePio-Dia8.pdf` },
+  { titulo: 'Día Noveno', href: `${BIBLIOTECA}/Novena-PadrePio-Dia9.pdf` },
 ]
 
 const NOVENA_MARIA = {
   titulo: 'Novena María Madre de los Servidores',
-  href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Novena-a-Maria-Madre-de-los-Servidores-Agosto-6-2025-1.pdf',
+  href: `${BIBLIOTECA}/Novena-Maria-Madre-Servidores.pdf`,
 }
 
 const PROTOCOLOS = [
-  {
-    titulo: 'Protocolo Santo Rosario de la Comunidad',
-    href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Protocolo-Santo-Rosario-Servidores_V1.3.pdf',
-  },
-  {
-    titulo: 'Protocolo de Vigilias',
-    href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Protocolo-de-Vigilia-para-los-Servidores-del-Servidor.pdf',
-  },
-  {
-    titulo: 'Protocolo de Retiros Espirituales',
-    href: 'https://servidoresdelservidor.org/wp-content/uploads/2025/10/Protocolo-de-un-retiro-Espritual-SDS.pdf',
-  },
+  { titulo: 'Protocolo Santo Rosario de la Comunidad', href: `${BIBLIOTECA}/Protocolo-Santo-Rosario.pdf` },
+  { titulo: 'Protocolo de Vigilias', href: `${BIBLIOTECA}/Protocolo-Vigilias.pdf` },
+  { titulo: 'Protocolo de Retiros Espirituales', href: `${BIBLIOTECA}/Protocolo-Retiros-Espirituales.pdf` },
 ]
 
 function Chevron({ abierto }) {
