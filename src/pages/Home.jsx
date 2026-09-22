@@ -41,7 +41,7 @@ export default function Home() {
     <>
       <Carousel />
 
-      <section className="px-[72px] pt-[60px] pb-4 text-center">
+      <section className="px-6 lg:px-[72px] pt-[60px] pb-4 text-center">
         <Link
           to="/donde-estamos"
           className="inline-flex items-center gap-2.5 px-[34px] py-4 bg-brand-terracotta text-white font-semibold text-[16px] hover:bg-[#9c5525] transition-colors"
@@ -54,7 +54,7 @@ export default function Home() {
       </section>
 
       {/* NUESTRA PRIORIDAD — misión, texto completo */}
-      <section className="relative px-[72px] pt-[100px] pb-[120px] overflow-hidden">
+      <section className="relative px-6 lg:px-[72px] pt-16 lg:pt-[100px] pb-16 lg:pb-[120px] overflow-hidden">
         <img src="/images/home-cielo.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-brand-cream/60" />
         <div className="relative max-w-[900px] mx-auto text-center">
@@ -71,9 +71,9 @@ export default function Home() {
       </section>
 
       {/* NUESTRAS OBRAS — fotos reales + las tres citas del Padre Pío */}
-      <section className="px-[72px] pb-[120px]">
+      <section className="px-6 lg:px-[72px] pb-16 lg:pb-[120px]">
         <div className="max-w-[1296px] mx-auto">
-          <div className="grid grid-cols-3 gap-10 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10 mb-10 lg:mb-16">
             {OBRAS_CARDS.map((card) => (
               <Link key={card.title} to={card.to} className="group block relative overflow-hidden aspect-[4/5]">
                 <img
@@ -88,7 +88,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
             {QUOTES.map((q) => (
               <p key={q} className="font-serif-display text-[16px] leading-[1.7] italic text-brand-ink-muted">
                 {q}
@@ -99,28 +99,28 @@ export default function Home() {
       </section>
 
       {/* ZONA DE SERVIDORES */}
-      <section className="px-[72px] pb-[120px]">
-        <div className="max-w-[700px] mx-auto text-center border border-brand-border px-8 py-10">
+      <section className="px-6 lg:px-[72px] pb-16 lg:pb-[120px]">
+        <div className="max-w-[700px] mx-auto text-center border border-brand-border px-5 lg:px-8 py-8 lg:py-10">
           <h2 className="font-serif-display text-[22px] text-brand-blue font-medium mb-2">Zona de Servidores</h2>
           <p className="text-[14px] text-brand-ink-muted mb-6">
             Si ya eres parte de la comunidad, ingresa para ver o actualizar tu información. Si aún no te has registrado, hazlo aquí.
           </p>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <a
               href="https://appsds.vercel.app/login"
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
             >
               Ingresa al sistema
             </a>
             <a
               href="https://appsds.vercel.app"
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
             >
               Regístrate en el sistema
             </a>
             <a
               href="https://formacion.servidoresdelservidor.org/"
-              className="inline-flex items-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-[26px] py-3 border border-brand-blue text-brand-blue font-semibold text-[14px] hover:bg-brand-blue hover:text-white transition-colors"
             >
               Formación
             </a>
@@ -130,13 +130,13 @@ export default function Home() {
 
       {/* PUBLICACIONES */}
       {publicaciones.length > 0 && (
-        <section className="px-[72px] pb-[120px]">
+        <section className="px-6 lg:px-[72px] pb-16 lg:pb-[120px]">
           <div className="max-w-[1296px] mx-auto">
-            <div className="mb-12 border-b border-brand-border pb-6">
-              <h2 className="font-serif-display text-[30px] text-brand-blue font-medium">Publicaciones</h2>
+            <div className="mb-10 lg:mb-12 border-b border-brand-border pb-6">
+              <h2 className="font-serif-display text-[26px] lg:text-[30px] text-brand-blue font-medium">Publicaciones</h2>
             </div>
 
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
               {publicaciones.map((post) => (
                 <article key={post.id}>
                   {post.imagen_url && (

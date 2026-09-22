@@ -1,6 +1,6 @@
 export default function PageSection({ eyebrow, title, children, className = '' }) {
   return (
-    <section className={`px-[72px] py-[70px] ${className}`}>
+    <section className={`px-6 lg:px-[72px] py-10 lg:py-[70px] ${className}`}>
       <div className="max-w-[900px] mx-auto">
         {eyebrow && (
           <div className="text-xs font-semibold tracking-[0.2em] uppercase text-brand-terracotta mb-4">

@@ -34,7 +34,7 @@ export default function Carousel() {
   }, [])
 
   return (
-    <section className="relative h-[560px] overflow-hidden bg-brand-ink">
+    <section className="relative h-[420px] lg:h-[560px] overflow-hidden bg-brand-ink">
       {SLIDES.map((slide, i) => (
         <div
           key={slide.img}
@@ -45,8 +45,8 @@ export default function Carousel() {
           <img src={slide.img} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
           <div className="absolute inset-0 flex items-end">
-            <div className="px-[72px] pb-16 max-w-[760px]">
-              <p className="font-serif-display text-[26px] leading-[1.5] text-white italic">
+            <div className="px-6 lg:px-[72px] pb-12 lg:pb-16 max-w-[760px]">
+              <p className="font-serif-display text-[19px] lg:text-[26px] leading-[1.4] lg:leading-[1.5] text-white italic">
                 {slide.quote}
               </p>
               {slide.source && (
@@ -59,7 +59,7 @@ export default function Carousel() {
         </div>
       ))}
 
-      <div className="absolute bottom-6 right-[72px] flex gap-2.5">
+      <div className="absolute bottom-6 right-6 lg:right-[72px] flex gap-2.5">
         {SLIDES.map((slide, i) => (
           <button
             key={slide.img}

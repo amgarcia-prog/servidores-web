@@ -20,7 +20,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="px-[72px] py-[52px] flex items-center justify-between flex-wrap gap-5">
+    <footer className="px-6 lg:px-[72px] py-10 lg:py-[52px] flex items-center justify-center lg:justify-between flex-wrap gap-5 text-center">
       <span className="text-[13px]" style={{ color: '#6E685C' }}>
         © {new Date().getFullYear()} Servidores del Servidor. Todos los Derechos Reservados.
       </span>
