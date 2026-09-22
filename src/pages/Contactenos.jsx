@@ -93,7 +93,7 @@ export default function Contactenos() {
               <Link to="/donde-estamos" className="text-brand-blue font-semibold hover:text-brand-terracotta transition-colors">
                 Dónde Estamos
               </Link>{' '}
-              — ahí encuentras los datos de contacto de cada comunidad.
+              — ahí encuentras los datos de contacto de cada ciudad.
             </p>
           </div>
 
