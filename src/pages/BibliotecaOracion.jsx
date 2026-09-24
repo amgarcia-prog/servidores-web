@@ -118,6 +118,16 @@ export default function BibliotecaOracion() {
             </div>
           </Categoria>
 
+          <a
+            href="/rosario.html"
+            className="w-full flex items-center justify-between font-serif-display text-[19px] text-white font-medium px-5 py-3 bg-brand-blue"
+          >
+            Rosario Interactivo
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-white">
+              <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+
           <Categoria titulo="Lectio del Servicio" abierto={abierto === 'lectio'} onToggle={() => toggle('lectio')}>
             <div className="divide-y divide-brand-border">
               {cargandoLectio ? (

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Santo Rosario · Servidores del Servidor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#F3F7FC;--paper:#FFFFFF;--ink:#1B2740;--soft:#55627A;--marian:#1F3F7A;--sky:#8DC2E8;--gold:#B8862A;--heart:#A8231B;--line:#D6E2F0;--fs:1.15rem}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1726;--paper:#16223A;--ink:#E8EEF8;--soft:#A5B3CB;--marian:#9CC6F0;--sky:#3F6FA8;--gold:#E0B25A;--heart:#E26A5F;--line:#26344F}}
+:root[data-theme="dark"]{--bg:#0E1726;--paper:#16223A;--ink:#E8EEF8;--soft:#A5B3CB;--marian:#9CC6F0;--sky:#3F6FA8;--gold:#E0B25A;--heart:#E26A5F;--line:#26344F}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Alegreya",Georgia,"Times New Roman",serif;font-size:var(--fs);line-height:1.6}
+.wrap{max-width:40rem;margin:0 auto;padding:1rem 1.1rem 7rem}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.6rem 1.1rem;max-width:40rem;margin:0 auto}
+.brand{font-size:.9rem;color:var(--soft)}
+.tools{display:flex;gap:.35rem}
+.tools button{font:inherit;font-size:.95rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:.5rem;padding:.25rem .6rem;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{text-align:center;padding:1.5rem 0 1rem}
+.cross{font-size:2rem;color:var(--gold);line-height:1}
+.hero h1{font-size:2.1rem;line-height:1.15;margin:.4rem 0 .3rem;color:var(--marian);font-weight:700}
+.hero p{margin:0;color:var(--soft);font-style:italic}
+.start{display:block;width:100%;margin:1.2rem 0 1.6rem;padding:1rem;border:0;border-radius:.9rem;background:var(--marian);color:var(--bg);font:inherit;font-size:1.2rem;font-weight:700;cursor:pointer}
+.grp{margin:1.4rem 0 .4rem;color:var(--gold);font-size:1rem;font-weight:700}
+ol.index{list-style:none;margin:0;padding:0;position:relative}
+ol.index::before{content:"";position:absolute;left:1.05rem;top:.8rem;bottom:.8rem;border-left:2px dotted var(--sky)}
+ol.index li a{position:relative;display:flex;align-items:center;gap:.9rem;padding:.55rem .4rem;text-decoration:none;color:var(--ink);border-radius:.6rem}
+ol.index li a:hover{background:var(--paper)}
+.bead{flex:none;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--paper);border:2px solid var(--marian);display:grid;place-items:center;font-size:.85rem;font-weight:700;color:var(--marian);z-index:1}
+.done .bead{background:var(--marian);color:var(--bg)}
+.mys .bead{border-color:var(--heart);color:var(--heart)}
+.done.mys .bead{background:var(--heart);color:#fff}
+.ttl{font-size:1.1rem}
+.sub{display:block;font-size:.88rem;color:var(--soft)}
+.page{background:var(--paper);border:1px solid var(--line);border-radius:1rem;padding:1.4rem 1.3rem 1.6rem;margin-top:.4rem}
+.step{color:var(--soft);font-size:.9rem;margin:0}
+.page h2{margin:.2rem 0 1rem;font-size:1.75rem;line-height:1.2;color:var(--marian)}
+.page p{margin:0 0 .9rem}
+.verse{white-space:pre-line}
+.note{border-left:3px solid var(--gold);padding:.4rem .8rem;margin:1rem 0;color:var(--soft);font-style:italic}
+.mname{color:var(--heart);font-size:1.3rem;font-weight:700;margin:0 0 .8rem}
+.lat{font-style:italic}
+h3{font-size:1.15rem;margin:1.3rem 0 .4rem;color:var(--marian)}
+.beads{display:flex;flex-wrap:wrap;gap:.55rem;margin:.6rem 0 .3rem}
+.beads button{width:2.6rem;height:2.6rem;border-radius:50%;border:2px solid var(--marian);background:transparent;color:var(--marian);font:inherit;font-weight:700;cursor:pointer}
+.beads button.on{background:var(--marian);color:var(--bg)}
+.count{font-size:.95rem;color:var(--soft)}
+.reset{font:inherit;font-size:.9rem;background:none;border:0;color:var(--gold);text-decoration:underline;cursor:pointer;padding:0}
+.tabs{display:flex;gap:.4rem;margin:0 0 1rem}
+.tabs button{flex:1;font:inherit;padding:.5rem;border-radius:.6rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--marian);color:var(--bg);border-color:var(--marian)}
+.lit p{margin:0 0 .35rem}.lit .r{color:var(--heart)}
+ul.jac{padding-left:1.1rem;margin:0}ul.jac li{margin:0 0 .6rem}
+details{margin:.4rem 0 .8rem;border:1px solid var(--line);border-radius:.6rem;padding:.4rem .8rem}
+summary{cursor:pointer;color:var(--marian);font-weight:500}
+nav.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+nav.bar .in{max-width:40rem;margin:0 auto;display:flex;gap:.6rem}
+nav.bar button{flex:1;font:inherit;font-size:1.05rem;font-weight:700;padding:.85rem .5rem;border-radius:.8rem;cursor:pointer}
+.b-menu{background:var(--paper);color:var(--marian);border:2px solid var(--marian)}
+.b-next{background:var(--marian);color:var(--bg);border:2px solid var(--marian)}
+.prev{display:inline-block;margin:.2rem 0 0;font:inherit;font-size:.9rem;background:none;border:0;color:var(--soft);cursor:pointer;padding:0;text-decoration:underline}
+.hidden{display:none}
+@media (prefers-reduced-motion:no-preference){.page{animation:in .25s ease-out}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body>
+<header class="top"><span class="brand">Servidores del Servidor</span>
+<div class="tools"><button id="fsm" aria-label="Letra más pequeña">A−</button><button id="fsp" aria-label="Letra más grande">A+</button></div></header>
+<main class="wrap" id="app"></main>
+<nav class="bar hidden" id="bar"><div class="in"><button class="b-menu" id="bmenu">Volver al menú</button><button class="b-next" id="bnext">Siguiente oración</button></div></nav>
+<script>
+const OH="Oh, mi buen Jesús, perdona nuestros pecados,\nlíbranos del fuego del infierno, lleva a todas las almas al cielo,\nespecialmente a las más necesitadas de tu infinita misericordia.";
+const PN="Padre nuestro, que estás en el cielo, santificado sea tu Nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación, y líbranos del mal. Amén.";
+const AM="Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.";
+const GL="Gloria al Padre, al Hijo y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.";
+const LPN="Pater Noster, qui es in caelis, sanctificétur nomen Tuum, adveniat Regnum Tuum, fiat volúntas tua, sicut in caelo et in terra.\nPanem nostrum cotidiánum da nobis hódie, et dimitte nobis débita nostra, sicut et nos dimittímus debitóribus nostris; et ne nos indúcas in tentatiónem, sed líbera nos a malo.\nAmen.";
+const LAM="Ave María, gratia plena, Dominus tecum,\nbenedicta tu in muliéribus,\net benedictus fructus ventris tui, Iesus.\nSancta María, Mater Dei,\nora pro nobis peccatóribus, nunc et in ora mortis nostrae.\nAmen.";
+const LGL="Gloria Patri, et Fili, et Spiritui Sancto.\nSicut erat in principio, et nunc et semper, et in saeccula saeculorum.\nAmen.";
+const JAC=["Santo Padre Pío, ruega por nosotros y fortalécenos en el servicio.","Jesús, amo tu cruz, amo mi cruz.","San José, haz crecer en mí la fe, que en ella encontraré la esperanza y la caridad.","Jesús, sois mi Señor, sois mi Dios, a vos me debo, a vos me doy. Que mi servicio sea para vos.","Todo tuyo soy, oh María, y todo cuanto tengo tuyo es.","Jesús, manso y humilde de corazón, has mi corazón semejante al tuyo.","Sagrada Eucaristía, vive en mí cada día.","Padre eterno, pon en mi corazón la cruz de Jesús, para dar tu amor.","Trinidad Santa, te entrego mi corazón, recíbelo."];
+const MYS=["La oración de Jesús en el huerto","La flagelación del Señor","La coronación de espinas","Jesús con la cruz a cuestas camino del Calvario","La crucifixión y muerte del Señor"];
+const ORD=["Primer","Segundo","Tercer","Cuarto","Quinto"];
+const v=t=>`<p class="verse">${t}</p>`, note=t=>`<div class="note">${t}</div>`;
+const S=[
+{g:"Inicio",t:"Persignarse",h:note("Signarse: tres cruces con el pulgar, en la frente, sobre los labios y sobre el pecho.")+v("Por la señal de la Santa Cruz,\nde nuestros enemigos líbranos, Señor, Dios nuestro.")+note("Santiguarse: una cruz de la frente al pecho y de hombro a hombro.")+v("En el nombre del Padre, y del Hijo, y del Espíritu Santo.\nAmén.")},
+{g:"Inicio",t:"Oración de sellamiento",s:"Se reza tres veces",h:note("Se reza tres veces.")+v("Amado Dios, amado Jesús,\nabro mi corazón a vuestra misericordia,\npido vuestro amor, vuestra protección, vuestra providencia.\nOs pido me cubráis con vuestra sangre bendita.\nSanto, Santo, Santo.")},
+{g:"Inicio",t:"Credo",h:v("Creo en Dios, Padre Todopoderoso, Creador del cielo y de la tierra.\nCreo en Jesucristo, su único Hijo, Nuestro Señor,\nque fue concebido por obra y gracia del Espíritu Santo,\nnació de Santa María Virgen,\npadeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado,\ndescendió a los infiernos, al tercer día resucitó de entre los muertos,\nsubió a los cielos y está sentado a la derecha de Dios Padre, todopoderoso.\nDesde allí ha de venir a juzgar a vivos y muertos.\nCreo en el Espíritu Santo, la santa Iglesia católica,\nla comunión de los santos, el perdón de los pecados, la resurrección de la carne\ny la vida eterna.\nAmén.")},
+{g:"Inicio",t:"Acto de contrición",h:v("Jesús, mi Señor y Redentor,\nyo me arrepiento de todos los pecados que he cometido hasta hoy,\ny me pesa de todo corazón porque con ellos ofendí a un Dios tan bueno.\nPropongo firmemente no volver a pecar,\ny confío en que, por tu infinita misericordia, me has de conceder el perdón de mis culpas y me has de llevar a la vida eterna.\nAmén.")},
+{g:"Inicio",t:"Santo",s:"Se reza tres veces",h:note("Se reza tres veces.")+v("Santo, Santo, Santo es el Señor, Dios del universo.\nLlenos están los cielos y la tierra de tu gloria.\nHosanna en el cielo.\nBendito el que viene en el nombre del Señor.\nHosanna en el cielo.")},
+{g:"Inicio",t:"Oración al Espíritu Santo",h:v("Ven, Creador Espíritu, de los tuyos la mente a visitar,\na encender en tu amor los corazones que de la nada te gustó crear.\nTú que eres gran Consolador, don altísimo de Dios, fuente viva, amor, fuego ardiente y espiritual unción.\nTú, tan generoso en dádivas; tú, poder de la diestra paternal;\ntú, promesa magnífica del Padre, que al torpe labio vienes a soltar.\nCon tu luz ilumina los sentidos, los afectos inflama con tu amor;\ncon tu fuerza invencible fortifica la corpórea flaqueza y corrupción.\nLejos expulsa al pérfido enemigo, danos pronto tu paz;\nsiendo tú nuestro guía, toda culpa logremos evitar.\nDenos tu influjo conocer al Padre, denos también al Hijo conocer,\ny en ti, del uno y otro Santo Espíritu, para siempre creer.\nA Dios Padre alabanza, honor y gloria, con el Hijo que un día resucitó,\ny a ti, abogado y consuelo del cristiano, por los siglos se rinda admiración.\nAmén.")},
+{g:"Inicio",t:"Oración de intercesión al Santo Padre Pío",s:"Con petición personal en silencio",h:v("Oh, amado Señor, Padre Eterno en la Santa Trinidad;\nte damos gracias y te glorificamos,\nporque de tu Divina Voluntad glorificada\npor los méritos del sacrificio perpetuo de tu amado Hijo en la cruz y en el sagrario,\nhemos recibido, según su promesa,\nlos dones del Santo Espíritu,\nel amor, la paz y la gracia de la vida eterna.\n\nAsí como miraste con misericordia\nal amado Padre Pío de Pietrelcina\ny lo llamaste a tu servicio, para hacerlo a tus ojos víctima de amor,\nimprimiendo en su cuerpo las huellas de la pasión de tu amado Hijo,\nte pedimos humildemente\naceptes, por su entrega y servicio a tu Hijo,\ny por su intercesión, las súplicas que nosotros,\nsus hijos espirituales\ny servidores de la Comunidad Apostólica Servidores del Servidor,\nelevamos a ti:\n\nPor el Papa.\nPor la Santa Iglesia Católica.\nPor nuestros Obispos y Sacerdotes.\nPor nuestra Comunidad.\nPor las almas.\nPor nosotros pecadores.\nPor los más humildes, menesterosos y abandonados miseritos.\n\nY especialmente por la necesidad que ahora te entregamos a la luz del Espíritu Santo desde el fondo de nuestros corazones…")+note("Hacer la petición personal en silencio.")+v("Confiados en tu bondad e infinita misericordia te suplicamos,\nsegún tu Santa Voluntad, nos concedas lo que te pedimos\npor intercesión del Santo Padre Pío,\nsi es para nuestro bien y salvación.\nGracias, mi Señor.\n\nConfiados en tu divina providencia, danos entonces la fe para glorificarte,\ndanos la esperanza para adorarte\ny danos la caridad para amarte, haciendo con nuestros hermanos según tu palabra.")+note("Padre nuestro, Ave María y Gloria.")}
+];
+MYS.forEach((m,i)=>S.push({g:"Misterios dolorosos",t:`${ORD[i]} misterio`,s:m,mys:i}));
+S.push(
+{g:"Final",t:"Por las intenciones del Santo Padre",h:v("Se ofrecen un Padre nuestro, tres Ave María y un Gloria por las intenciones del Santo Padre y por las vocaciones religiosas, sacerdotales, misioneras y por las comunidades laicales.")+`<h3>Ave María</h3><div class="beads" data-n="3"></div><p class="count"></p>`+`<details><summary>Ver Padre nuestro, Ave María y Gloria</summary>${v(PN)}${v(AM)}${v(GL)}</details>`},
+{g:"Final",t:"La Salve",s:"Por las benditas almas del purgatorio",salve:1},
+{g:"Final",t:"Ofrecimiento a la Virgen María",h:v("Bendita sea tu pureza y eternamente lo sea,\npues todo un Dios se recrea en tan graciosa belleza.\nA ti, celestial princesa, Virgen sagrada María,\nyo te ofrezco en este día alma, vida y corazón.\nMírame con compasión, no me dejes, Madre mía.\n\nMi corazón a tus plantas pongo, hermosa María,\npara que a Jesús lo ofrezcas junto con el alma mía.\nAmén.")},
+{g:"Final",t:"Consagración a la Virgen María",h:v("¡Oh Señora mía! ¡Oh Madre mía!\nYo me ofrezco en todo a ti,\ny en prueba de mi filial afecto te consagro en este día\nmis ojos, mis oídos, mi lengua, mi corazón,\nen una palabra, todo mi ser.\nY ya que soy todo tuyo, oh Madre de bondad,\nguárdame y defiéndeme como hijo y posesión tuya.\nAmén.")},
+{g:"Final",t:"Oración a San Miguel Arcángel",h:v("San Miguel Arcángel, defiéndenos en la pelea,\nsé nuestro amparo contra la maldad y las acechanzas del demonio.\nReprímele, oh Dios, como rendidamente te lo suplicamos,\ny tú, príncipe de la milicia celestial,\narmado del poder divino, precipita al infierno a Satanás\ny a todos los espíritus malignos que para la perdición de las almas\nandan por el mundo.\nAmén.")},
+{g:"Final",t:"Ángel de la Guarda",h:v("Santo Ángel de mi guarda,\nmi dulce compañía,\nno me desampares ni de noche ni de día,\nhasta que me pongas en paz y alegría\ncon todos los santos, Jesús, José y María.\nSi me desamparas, ¿qué será de mí?\nSanto Ángel de mi guarda, ruega a Dios por mí.\nAmén.")},
+{g:"Final",t:"Letanías a la Virgen",s:"Con su oración",lit:1},
+{g:"Final",t:"Oración final",h:v("Dulce Madre, no te alejes,\ntu vista de nosotros no apartes,\nven con nosotros a todas partes\ny solos nunca nos dejes.\nY ya que nos amas tanto\ncomo verdadera Madre,\nhaz que nos bendiga\nel Padre, el Hijo y el Espíritu Santo.\nAmén.")},
+{g:"Final",t:"Jaculatorias",h:`<ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul>`}
+);
+const LIT_K=[["Señor, ten piedad.",""],["Cristo, ten piedad.",""],["Señor, ten piedad.",""],["Cristo, óyenos.",""],["Cristo, escúchanos.",""]];
+const PIE=["Dios, Padre celestial,","Dios, Hijo, Redentor del mundo,","Dios, Espíritu Santo,","Santísima Trinidad, un solo Dios,"];
+const RUEGA=["Santa Madre de Dios","Santa Virgen de las Vírgenes","Madre de Cristo","Madre de la Iglesia","Madre purísima","Madre castísima","Madre y Virgen","Madre sin mancha","Madre inmaculada","Madre amable","Madre de la divina gracia","Madre admirable","Madre del buen consejo","Madre del Creador","Madre del Salvador","María, Madre de los Servidores","Virgen digna de veneración","Virgen poderosa","Virgen acogedora","Virgen fiel","Ideal de santidad","Trono de la sabiduría","Causa de nuestra alegría","Templo del Espíritu Santo","Obra maestra de la gracia","Modelo de entrega a Dios","Rosa escogida","Fuerte como torre de David","Hermosa como torre de marfil","Arca de la nueva Alianza","Puerta del cielo","Estrella de la mañana","Salud de los enfermos","Refugio de los pecadores","Consoladora de los tristes","Auxilio de los cristianos","Reina de los Ángeles","Reina de los Patriarcas","Reina de los Profetas","Reina de los Apóstoles","Reina de los Mártires","Reina de los confesores e la fe","Reina de todos los Santos","Reina concebida sin pecado original","Reina llevada al Cielo","Reina del Santo Rosario","Reina de la paz","Reina de la Compañía de Jesús"];
+function litHTML(){let h=note("Quien guía dice la invocación; todos responden lo que está en color.")+'<div class="lit">';
+LIT_K.forEach(([a])=>h+=`<p>${a}</p>`);PIE.forEach(a=>h+=`<p>${a} <span class="r">ten piedad de nosotros.</span></p>`);
+RUEGA.forEach(a=>h+=`<p>${a}, <span class="r">ruega por nosotros.</span></p>`);
+["Perdónanos, Señor.","Escúchanos, Señor.","Ten piedad de nosotros."].forEach(r=>h+=`<p>Cordero de Dios, que quitas el pecado del mundo, <span class="r">${r}</span></p>`);
+h+=`<p>Ruega por nosotros, Santa Madre de Dios.</p><p class="r">Para que seamos dignos de las promesas de Cristo.</p></div><h3>Oración</h3>`+v("Señor y Dios nuestro,\nte rogamos nos concedas, como servidores tuyos,\ngozar siempre de salud de alma y cuerpo;\ny por la intercesión gloriosa de la bienaventurada siempre Virgen María,\nlíbranos de las tristezas de la vida presente\ny otórganos las alegrías eternas.\nPor Jesucristo nuestro Señor.\nAmén.");return h}
+const SALVE_ES="Dios te salve, Reina y Madre,\nMadre de misericordia,\nvida, dulzura y esperanza nuestra;\nDios te salve. A ti clamamos los desterrados hijos de Eva;\na ti suspiramos, gimiendo y llorando en este valle de lágrimas.\nEa, pues, Señora, abogada nuestra,\nvuelve a nosotros esos tus ojos misericordiosos;\ny después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre.\n¡Oh clemente, oh piadosa,\noh dulce siempre Virgen María!\n\nRuega por nosotros, Santa Madre de Dios,\npara que seamos dignos de alcanzar y gozar las promesas y gracias de Nuestro Señor Jesucristo.\nAmén.";
+const SALVE_LA="Salve, Regina, Mater misericordiae.\nVita, dulcedo et spes nostra, salve.\nAd te clamamus exsules filii Hevae.\nAd te suspiramus gementes et flentes in hac lacrimarum valle.\nEia, ergo, advocata nostra, illos tuos misericordes oculos ad nos converte;\net Iesum, benedictum fructum ventris tui, nobis post hoc exsilium ostende.\nO clemens, O pia, O dulcis Virgo Maria.\n\nV. Ora pro nobis, sancta Dei Genetrix.\nR. Ut digni efficiamur promissionibus Christi.\nAmen.";
+function mysHTML(i){const last=i===4;let h=`<p class="mname">${MYS[i]}</p>`;
+if(i===0)h+=note("Ofrecimiento: las intenciones ya se ofrecieron al inicio; ahora meditamos el misterio como un solo corazón.");
+if(last)h+=note("Se recomienda rezar este último misterio de rodillas, en señal de penitencia, y en latín.");
+h+=`<h3>${last?"Pater Noster":"Padre nuestro"}</h3>`+(last?v(LPN):`<details><summary>Ver texto</summary>${v(PN)}</details>`);
+h+=`<h3>${last?"Ave María (latín)":"Diez Ave María"}</h3>`+(last?`<p class="verse lat">${LAM}</p>`:`<details><summary>Ver texto</summary>${v(AM)}</details>`);
+h+=`<div class="beads" data-n="10"></div><p class="count"></p><button class="reset" data-reset>Reiniciar cuentas</button>`;
+h+=`<h3>Gloria</h3>`+(last?`<p class="verse lat">${LGL}</p>`:`<details><summary>Ver texto</summary>${v(GL)}</details>`);
+h+=`<h3>Oh, mi buen Jesús</h3>`+v(OH);
+h+=`<h3>Jaculatorias</h3>`+note(i===0?"Rezar dos jaculatorias propias de la comunidad; si se quiere, se agrega una más.":"Rezar dos jaculatorias propias de la comunidad.");
+h+=`<ul class="jac"><li>${JAC[(i*2)%9]}</li><li>${JAC[(i*2+1)%9]}</li></ul><details><summary>Ver todas las jaculatorias</summary><ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul></details>`;return h}
+const app=document.getElementById("app"),bar=document.getElementById("bar");
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,x){try{localStorage.setItem(k,x)}catch(e){}}};
+let fs=parseFloat(store.get("fs"))||1.15;const setFs=()=>document.documentElement.style.setProperty("--fs",fs+"rem");setFs();
+document.getElementById("fsp").onclick=()=>{fs=Math.min(1.8,fs+.1);setFs();store.set("fs",fs)};
+document.getElementById("fsm").onclick=()=>{fs=Math.max(.95,fs-.1);setFs();store.set("fs",fs)};
+let visited=new Set();
+function home(){bar.classList.add("hidden");let h=`<section class="hero"><div class="cross">✝</div><h1>Santo Rosario</h1><p>Al estilo Servidores del Servidor · Martes, misterios dolorosos</p></section><button class="start" onclick="go(0)">Comenzar el Rosario</button>`;
+let g="";h+='<ol class="index">';S.forEach((s,i)=>{if(s.g!==g){g=s.g;h+=`</ol><p class="grp">${g}</p><ol class="index">`}
+h+=`<li class="${visited.has(i)?"done":""} ${s.mys!==undefined?"mys":""}"><a href="#/${i+1}"><span class="bead">${i+1}</span><span><span class="ttl">${s.t}</span>${s.s?`<span class="sub">${s.s}</span>`:""}</span></a></li>`});
+app.innerHTML=h+"</ol>";window.scrollTo(0,0)}
+function go(i){location.hash="#/"+(i+1)}
+function page(i){const s=S[i];visited.add(i);bar.classList.remove("hidden");
+let body=s.mys!==undefined?mysHTML(s.mys):s.salve?`<p class="note">Se puede cantar en latín o rezar en español.</p><div class="tabs"><button class="on" data-l="es">Español</button><button data-l="la">Latín</button></div><div id="sv">${v(SALVE_ES)}</div>`:s.lit?litHTML():s.h;
+app.innerHTML=`<article class="page"><p class="step">${i+1} de ${S.length} · ${s.g}</p><h2>${s.t}</h2>${body}${i>0?`<button class="prev" onclick="go(${i-1})">Volver a la oración anterior</button>`:""}</article>`;
+document.getElementById("bnext").textContent=i===S.length-1?"Terminar":"Siguiente oración";
+document.getElementById("bnext").onclick=()=>i===S.length-1?(location.hash="#/"):go(i+1);
+app.querySelectorAll(".beads").forEach(b=>{const n=+b.dataset.n,c=b.nextElementSibling;let k=0;
+const draw=()=>{b.querySelectorAll("button").forEach((x,j)=>x.classList.toggle("on",j<k));c.textContent=k===n?`Completado: ${n} de ${n}`:`Toque cada cuenta al rezar: ${k} de ${n}`};
+for(let j=0;j<n;j++){const x=document.createElement("button");x.textContent=j+1;x.setAttribute("aria-label","Ave María "+(j+1));x.onclick=()=>{k=j+1===k?j:j+1;draw()};b.appendChild(x)}
+draw();const r=app.querySelector("[data-reset]");if(r)r.onclick=()=>{k=0;draw()}});
+app.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{app.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===t));
+document.getElementById("sv").innerHTML=t.dataset.l==="es"?v(SALVE_ES):`<p class="verse lat">${SALVE_LA}</p>`});
+window.scrollTo(0,0)}
+document.getElementById("bmenu").onclick=()=>{location.hash="#/"};
+function route(){const n=parseInt((location.hash.split("/")[1])||"");(n>=1&&n<=S.length)?page(n-1):home()}
+window.addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
