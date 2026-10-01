@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
 import { CIUDADES } from '../data/ciudades'
+import { API_URL } from '../config'
 
 function WhatsAppIcon() {
   return (
@@ -20,6 +22,15 @@ function WhatsAppIcon() {
 export default function Ciudad() {
   const { slug } = useParams()
   const ciudad = CIUDADES[slug]
+  const [dinamico, setDinamico] = useState(null)
+
+  useEffect(() => {
+    if (!ciudad || ciudad.enConstruccion) return
+    fetch(`${API_URL}/api/ciudad-publica/${encodeURIComponent(ciudad.nombre)}`)
+      .then((r) => r.json())
+      .then(setDinamico)
+      .catch(() => {})
+  }, [slug])
 
   if (!ciudad) {
     return (
@@ -65,6 +76,11 @@ export default function Ciudad() {
     )
   }
 
+  const historiaTexto = dinamico?.contenido?.historia
+  const subtitulo = dinamico?.contenido?.subtitulo || ciudad.subtitulo
+  const historiaFotos = dinamico?.contenido?.historia_fotos || []
+  const serviciosDinamicos = dinamico?.servicios || []
+
   const waHref = ciudad.whatsapp
     ? `https://wa.me/${ciudad.whatsapp}?text=${encodeURIComponent(
         `¡Servido sea Jesucristo! Quisiera más información sobre el servicio en ${ciudad.nombre}.`
@@ -84,10 +100,10 @@ export default function Ciudad() {
         </Link>
       </section>
 
-      {ciudad.subtitulo && (
+      {subtitulo && (
         <section className="px-6 lg:px-[72px] pt-[60px] pb-4 text-center">
           <p className="max-w-[800px] mx-auto font-serif-display text-[22px] italic text-brand-blue leading-[1.5]">
-            {ciudad.subtitulo}
+            {subtitulo}
           </p>
         </section>
       )}
@@ -100,38 +116,57 @@ export default function Ciudad() {
         </section>
       )}
 
-      {/* HISTORIA */}
-      {ciudad.historia && (
+      {/* HISTORIA — dinámica si el equipo de comunicaciones de la ciudad ya la cargó, si no la de siempre */}
+      {historiaTexto ? (
         <section className="px-6 lg:px-[72px] py-10 lg:py-[50px]">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 lg:gap-14 items-center">
-            <div>
-              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
-                {ciudad.historia.titulo}
-              </h2>
-              <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.historia.texto}</p>
-            </div>
-            {ciudad.historia.foto && (
-              <img src={ciudad.historia.foto} alt={ciudad.historia.titulo} className="w-full aspect-[4/3] object-cover" />
+          <div className="max-w-[900px] mx-auto">
+            <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4 text-center">
+              Nuestra Historia
+            </h2>
+            <p className="text-[15px] leading-[1.8] text-brand-ink-muted whitespace-pre-line">{historiaTexto}</p>
+            {historiaFotos.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                {historiaFotos.map((foto) => (
+                  <img key={foto} src={foto} alt="" className="w-full aspect-[4/3] object-cover" />
+                ))}
+              </div>
             )}
           </div>
         </section>
-      )}
+      ) : (
+        <>
+          {ciudad.historia && (
+            <section className="px-6 lg:px-[72px] py-10 lg:py-[50px]">
+              <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 lg:gap-14 items-center">
+                <div>
+                  <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
+                    {ciudad.historia.titulo}
+                  </h2>
+                  <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.historia.texto}</p>
+                </div>
+                {ciudad.historia.foto && (
+                  <img src={ciudad.historia.foto} alt={ciudad.historia.titulo} className="w-full aspect-[4/3] object-cover" />
+                )}
+              </div>
+            </section>
+          )}
 
-      {/* LABOR HOY */}
-      {ciudad.labor && (
-        <section className="px-6 lg:px-[72px] py-10 lg:py-[50px] bg-white">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 lg:gap-14 items-center">
-            {ciudad.labor.foto && (
-              <img src={ciudad.labor.foto} alt={ciudad.labor.titulo} className="w-full aspect-[4/3] object-cover" />
-            )}
-            <div>
-              <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
-                {ciudad.labor.titulo}
-              </h2>
-              <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.labor.texto}</p>
-            </div>
-          </div>
-        </section>
+          {ciudad.labor && (
+            <section className="px-6 lg:px-[72px] py-10 lg:py-[50px] bg-white">
+              <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 lg:gap-14 items-center">
+                {ciudad.labor.foto && (
+                  <img src={ciudad.labor.foto} alt={ciudad.labor.titulo} className="w-full aspect-[4/3] object-cover" />
+                )}
+                <div>
+                  <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
+                    {ciudad.labor.titulo}
+                  </h2>
+                  <p className="text-[15px] leading-[1.8] text-brand-ink-muted">{ciudad.labor.texto}</p>
+                </div>
+              </div>
+            </section>
+          )}
+        </>
       )}
 
       {/* DONDE SERVIMOS */}
@@ -141,7 +176,26 @@ export default function Ciudad() {
             <h2 className="font-serif-display text-[28px] text-brand-blue font-medium">Dónde servimos</h2>
           </div>
 
-          {!ciudad.grupos || ciudad.grupos.every((g) => g.puntos.length === 0) ? (
+          {serviciosDinamicos.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-10">
+              {serviciosDinamicos.map((s) => (
+                <div key={s.id}>
+                  {s.fotos?.length > 0 && (
+                    <div className="aspect-[4/3] mb-4 overflow-hidden">
+                      <img src={s.fotos[0]} alt={s.nombre} className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  <h4 className="font-serif-display text-[19px] text-brand-blue font-medium mb-1.5">{s.nombre}</h4>
+                  {s.horario && (
+                    <p className="text-[12px] font-semibold uppercase tracking-wide text-brand-terracotta mb-2">{s.horario}</p>
+                  )}
+                  {s.descripcion && <p className="text-[14px] leading-[1.7] text-brand-ink-muted mb-2">{s.descripcion}</p>}
+                  {s.direccion && <p className="text-[13px] text-brand-ink-muted">{s.direccion}</p>}
+                  {s.telefono && <p className="text-[13px] text-brand-ink-muted">Tel: {s.telefono}</p>}
+                </div>
+              ))}
+            </div>
+          ) : !ciudad.grupos || ciudad.grupos.every((g) => g.puntos.length === 0) ? (
             <p className="text-brand-ink-muted text-[15px]">
               Muy pronto publicaremos aquí los puntos de servicio de {ciudad.nombre}.
             </p>
@@ -220,7 +274,7 @@ export default function Ciudad() {
       )}
 
       {/* CIERRE */}
-      {ciudad.cierre && (
+      {!historiaTexto && ciudad.cierre && (
         <section className="px-6 lg:px-[72px] py-10 lg:py-[60px] bg-white text-center">
           <div className="max-w-[800px] mx-auto">
             <h2 className="font-serif-display text-[24px] text-brand-blue font-medium mb-4">
