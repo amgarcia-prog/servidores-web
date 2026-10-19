@@ -51,7 +51,7 @@ h3{font-size:1.15rem;margin:1.3rem 0 .4rem;color:var(--marian)}
 .beads button.on{background:var(--marian);color:var(--bg)}
 .count{font-size:.95rem;color:var(--soft)}
 .reset{font:inherit;font-size:.9rem;background:none;border:0;color:var(--gold);text-decoration:underline;cursor:pointer;padding:0}
-.tabs{display:flex;gap:.4rem;margin:0 0 1rem}
+.tabs{display:flex;gap:.4rem;margin:.2rem 0 .7rem}
 .tabs button{flex:1;font:inherit;padding:.5rem;border-radius:.6rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
 .tabs button.on{background:var(--marian);color:var(--bg);border-color:var(--marian)}
 .lit p{margin:0 0 .35rem}.lit .r{color:var(--heart)}
@@ -117,13 +117,14 @@ RUEGA.forEach(a=>h+=`<p>${a}, <span class="r">ruega por nosotros.</span></p>`);
 h+=`<p>Ruega por nosotros, Santa Madre de Dios.</p><p class="r">Para que seamos dignos de las promesas de Cristo.</p></div><h3>Oración</h3>`+v("Señor y Dios nuestro,\nte rogamos nos concedas, como servidores tuyos,\ngozar siempre de salud de alma y cuerpo;\ny por la intercesión gloriosa de la bienaventurada siempre Virgen María,\nlíbranos de las tristezas de la vida presente\ny otórganos las alegrías eternas.\nPor Jesucristo nuestro Señor.\nAmén.");return h}
 const SALVE_ES="Dios te salve, Reina y Madre,\nMadre de misericordia,\nvida, dulzura y esperanza nuestra;\nDios te salve. A ti clamamos los desterrados hijos de Eva;\na ti suspiramos, gimiendo y llorando en este valle de lágrimas.\nEa, pues, Señora, abogada nuestra,\nvuelve a nosotros esos tus ojos misericordiosos;\ny después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre.\n¡Oh clemente, oh piadosa,\noh dulce siempre Virgen María!\n\nRuega por nosotros, Santa Madre de Dios,\npara que seamos dignos de alcanzar y gozar las promesas y gracias de Nuestro Señor Jesucristo.\nAmén.";
 const SALVE_LA="Salve, Regina, Mater misericordiae.\nVita, dulcedo et spes nostra, salve.\nAd te clamamus exsules filii Hevae.\nAd te suspiramus gementes et flentes in hac lacrimarum valle.\nEia, ergo, advocata nostra, illos tuos misericordes oculos ad nos converte;\net Iesum, benedictum fructum ventris tui, nobis post hoc exsilium ostende.\nO clemens, O pia, O dulcis Virgo Maria.\n\nV. Ora pro nobis, sancta Dei Genetrix.\nR. Ut digni efficiamur promissionibus Christi.\nAmen.";
+function tabs(la,es,first){const L=`<p class="verse lat">${la}</p>`,E=v(es);const a=first==="la";return `<div class="tg"><div class="tabs"><button class="${a?"on":""}" data-l="la">Latín</button><button class="${a?"":"on"}" data-l="es">Español</button></div><div class="pane${a?"":" hidden"}" data-l="la">${L}</div><div class="pane${a?" hidden":""}" data-l="es">${E}</div></div>`}
 function mysHTML(i){const last=i===4;let h=`<p class="mname">${MYS[i]}</p>`;
 if(i===0)h+=note("Ofrecimiento: las intenciones ya se ofrecieron al inicio; ahora meditamos el misterio como un solo corazón.");
 if(last)h+=note("Se recomienda rezar este último misterio de rodillas, en señal de penitencia, y en latín.");
-h+=`<h3>${last?"Pater Noster":"Padre nuestro"}</h3>`+(last?v(LPN):`<details><summary>Ver texto</summary>${v(PN)}</details>`);
-h+=`<h3>${last?"Ave María (latín)":"Diez Ave María"}</h3>`+(last?`<p class="verse lat">${LAM}</p>`:`<details><summary>Ver texto</summary>${v(AM)}</details>`);
+h+=`<h3>Padre nuestro</h3>`+(last?tabs(LPN,PN,"la"):`<details><summary>Ver texto</summary>${v(PN)}</details>`);
+h+=`<h3>Diez Ave María</h3>`+(last?tabs(LAM,AM,"la"):`<details><summary>Ver texto</summary>${v(AM)}</details>`);
 h+=`<div class="beads" data-n="10"></div><p class="count"></p><button class="reset" data-reset>Reiniciar cuentas</button>`;
-h+=`<h3>Gloria</h3>`+(last?`<p class="verse lat">${LGL}</p>`:`<details><summary>Ver texto</summary>${v(GL)}</details>`);
+h+=`<h3>Gloria</h3>`+(last?tabs(LGL,GL,"la"):`<details><summary>Ver texto</summary>${v(GL)}</details>`);
 h+=`<h3>Oh, mi buen Jesús</h3>`+v(OH);
 h+=`<h3>Jaculatorias</h3>`+note(i===0?"Rezar dos jaculatorias propias de la comunidad; si se quiere, se agrega una más.":"Rezar dos jaculatorias propias de la comunidad.");
 h+=`<ul class="jac"><li>${JAC[(i*2)%9]}</li><li>${JAC[(i*2+1)%9]}</li></ul><details><summary>Ver todas las jaculatorias</summary><ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul></details>`;return h}
@@ -139,7 +140,7 @@ h+=`<li class="${visited.has(i)?"done":""} ${s.mys!==undefined?"mys":""}"><a hre
 app.innerHTML=h+"</ol>";window.scrollTo(0,0)}
 function go(i){location.hash="#/"+(i+1)}
 function page(i){const s=S[i];visited.add(i);bar.classList.remove("hidden");
-let body=s.mys!==undefined?mysHTML(s.mys):s.salve?`<p class="note">Se puede cantar en latín o rezar en español.</p><div class="tabs"><button class="on" data-l="es">Español</button><button data-l="la">Latín</button></div><div id="sv">${v(SALVE_ES)}</div>`:s.lit?litHTML():s.h;
+let body=s.mys!==undefined?mysHTML(s.mys):s.salve?`<p class="note">Se puede cantar en latín o rezar en español.</p>${tabs(SALVE_LA,SALVE_ES,"es")}`:s.lit?litHTML():s.h;
 app.innerHTML=`<article class="page"><p class="step">${i+1} de ${S.length} · ${s.g}</p><h2>${s.t}</h2>${body}${i>0?`<button class="prev" onclick="go(${i-1})">Volver a la oración anterior</button>`:""}</article>`;
 document.getElementById("bnext").textContent=i===S.length-1?"Terminar":"Siguiente oración";
 document.getElementById("bnext").onclick=()=>i===S.length-1?(location.hash="#/"):go(i+1);
@@ -147,8 +148,7 @@ app.querySelectorAll(".beads").forEach(b=>{const n=+b.dataset.n,c=b.nextElementS
 const draw=()=>{b.querySelectorAll("button").forEach((x,j)=>x.classList.toggle("on",j<k));c.textContent=k===n?`Completado: ${n} de ${n}`:`Toque cada cuenta al rezar: ${k} de ${n}`};
 for(let j=0;j<n;j++){const x=document.createElement("button");x.textContent=j+1;x.setAttribute("aria-label","Ave María "+(j+1));x.onclick=()=>{k=j+1===k?j:j+1;draw()};b.appendChild(x)}
 draw();const r=app.querySelector("[data-reset]");if(r)r.onclick=()=>{k=0;draw()}});
-app.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{app.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===t));
-document.getElementById("sv").innerHTML=t.dataset.l==="es"?v(SALVE_ES):`<p class="verse lat">${SALVE_LA}</p>`});
+app.querySelectorAll(".tg").forEach(g=>g.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{g.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===t));g.querySelectorAll(".pane").forEach(x=>x.classList.toggle("hidden",x.dataset.l!==t.dataset.l))}));
 window.scrollTo(0,0)}
 document.getElementById("bmenu").onclick=()=>{location.hash="#/"};
 function route(){const n=parseInt((location.hash.split("/")[1])||"");(n>=1&&n<=S.length)?page(n-1):home()}
