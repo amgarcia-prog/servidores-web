@@ -65,12 +65,46 @@ nav.bar button{flex:1;font:inherit;font-size:1.05rem;font-weight:700;padding:.85
 .b-next{background:var(--marian);color:var(--bg);border:2px solid var(--marian)}
 .prev{display:inline-block;margin:.2rem 0 0;font:inherit;font-size:.9rem;background:none;border:0;color:var(--soft);cursor:pointer;padding:0;text-decoration:underline}
 .hidden{display:none}
+.start.proj-btn{background:transparent;color:var(--marian);border:2px solid var(--marian);margin-top:-.6rem}
+.hint{font-size:.9rem;color:var(--soft);text-align:center;margin:-.8rem 0 1.2rem}
+body.pm{background:#0E1C38;overflow:hidden}
+body.pm header.top,body.pm nav.bar{display:none}
+body.pm .wrap{max-width:none;padding:0}
+.proj{position:fixed;inset:0;display:flex;flex-direction:column;background:#0E1C38;color:var(--txt,#FFF8E8);padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2vh 2.5vw;background:var(--acc,#E9BE62);color:#0E1C38;font-size:clamp(22px,7vh,72px);line-height:1.1;font-weight:700}
+.ph .k{color:#0E1C38;opacity:.7;font-weight:400;font-size:.5em;white-space:nowrap}
+.pbar{height:.9vh;background:#22355C;margin:1vh 2.5vw 0;border-radius:9px;overflow:hidden}.pbar i{display:block;height:100%;background:var(--acc,#E9BE62)}
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:2vh 4vw;overflow:hidden;cursor:pointer}
+.content{width:100%;text-align:center;line-height:1.3}
+.content .lbl{color:var(--acc,#E9BE62);font-size:.62em;font-weight:700;margin-bottom:.3em}
+.content .pn{color:#B9C8E4;font-style:italic;font-size:.5em;margin-bottom:.5em}
+.content .big{font-weight:700}
+.content .big.mys{color:#FF9E94}
+.content .txt.lat{font-style:italic}
+.content .txt .r{color:#FFB3AB}
+.content .pb{display:flex;flex-wrap:wrap;justify-content:center;gap:.25em;margin-top:.2em}
+.content .pb span{line-height:1;padding-top:.04em;width:1.15em;height:1.15em;border-radius:50%;border:.07em solid #E9BE62;display:grid;place-items:center;font-size:.8em;color:#E9BE62}
+.content .pb span.on{background:#E9BE62;color:#0E1C38}
+.pf{display:flex;gap:1vw;padding:1vh 2.5vw 1.6vh}
+.pf button{font:inherit;font-size:clamp(14px,2.6vh,26px);padding:1vh 1.4vw;border-radius:10px;border:1.5px solid #3D5687;background:#16284B;color:#FFF8E8;cursor:pointer}
+.pf .grow{flex:1}.latbtn{font:inherit;font-size:clamp(14px,.38em,30px);margin-top:.6em;padding:.4em 1.2em;border-radius:999px;border:2px solid #E9BE62;background:transparent;color:#E9BE62;font-weight:700;cursor:pointer}.pf .nx{background:#E9BE62;color:#0E1C38;border-color:#E9BE62;font-weight:700}
+.pmenu{position:fixed;inset:0;overflow:auto;background:#0E1C38;color:#FFF8E8;padding:3vh 3vw calc(3vh + env(safe-area-inset-bottom,0px))}
+.pmenu h1{color:#E9BE62;text-align:center;font-size:clamp(24px,5vh,56px);margin:0 0 .2em}
+.pmenu .sub{text-align:center;color:#B9C8E4;margin:0 0 2vh;font-size:clamp(14px,2.4vh,24px)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1.2vh 1.2vw}
+.pgrid a{display:block;padding:1.4vh 1.2vw;border-radius:12px;background:#16284B;color:#FFF8E8;text-decoration:none;font-size:clamp(15px,2.6vh,26px);border:1px solid #2A4070}
+.pgrid a b{color:#E9BE62;margin-right:.4em}.pgrid a.m b{color:#FF9E94}
+.prow{display:flex;gap:1vw;justify-content:center;flex-wrap:wrap;margin:0 0 2.5vh}
+.prow button{font:inherit;font-size:clamp(15px,2.6vh,26px);padding:1.2vh 2vw;border-radius:12px;border:0;cursor:pointer}
+.prow .go{background:#E9BE62;color:#0E1C38;font-weight:700}.prow .out{background:#16284B;color:#FFF8E8;border:1px solid #3D5687}
+.keys{text-align:center;color:#7F93B8;font-size:clamp(12px,1.9vh,18px);margin-top:2.5vh}
+
 @media (prefers-reduced-motion:no-preference){.page{animation:in .25s ease-out}@keyframes in{from{opacity:0}to{opacity:1}}}
 </style>
 </head>
 <body>
 <header class="top"><span class="brand">Servidores del Servidor</span>
-<div class="tools"><button id="fsm" aria-label="Letra más pequeña">A−</button><button id="fsp" aria-label="Letra más grande">A+</button></div></header>
+<div class="tools"><button id="pmode" aria-label="Modo proyección">📺 Proyectar</button><button id="fsm" aria-label="Letra más pequeña">A−</button><button id="fsp" aria-label="Letra más grande">A+</button></div></header>
 <main class="wrap" id="app"></main>
 <nav class="bar hidden" id="bar"><div class="in"><button class="b-menu" id="bmenu">Volver al menú</button><button class="b-next" id="bnext">Siguiente oración</button></div></nav>
 <script>
@@ -92,7 +126,7 @@ const S=[
 {g:"Inicio",t:"Acto de contrición",h:v("Jesús, mi Señor y Redentor,\nyo me arrepiento de todos los pecados que he cometido hasta hoy,\ny me pesa de todo corazón porque con ellos ofendí a un Dios tan bueno.\nPropongo firmemente no volver a pecar,\ny confío en que, por tu infinita misericordia, me has de conceder el perdón de mis culpas y me has de llevar a la vida eterna.\nAmén.")},
 {g:"Inicio",t:"Santo",s:"Se reza tres veces",h:note("Se reza tres veces.")+v("Santo, Santo, Santo es el Señor, Dios del universo.\nLlenos están los cielos y la tierra de tu gloria.\nHosanna en el cielo.\nBendito el que viene en el nombre del Señor.\nHosanna en el cielo.")},
 {g:"Inicio",t:"Oración al Espíritu Santo",h:v("Ven, Creador Espíritu, de los tuyos la mente a visitar,\na encender en tu amor los corazones que de la nada te gustó crear.\nTú que eres gran Consolador, don altísimo de Dios, fuente viva, amor, fuego ardiente y espiritual unción.\nTú, tan generoso en dádivas; tú, poder de la diestra paternal;\ntú, promesa magnífica del Padre, que al torpe labio vienes a soltar.\nCon tu luz ilumina los sentidos, los afectos inflama con tu amor;\ncon tu fuerza invencible fortifica la corpórea flaqueza y corrupción.\nLejos expulsa al pérfido enemigo, danos pronto tu paz;\nsiendo tú nuestro guía, toda culpa logremos evitar.\nDenos tu influjo conocer al Padre, denos también al Hijo conocer,\ny en ti, del uno y otro Santo Espíritu, para siempre creer.\nA Dios Padre alabanza, honor y gloria, con el Hijo que un día resucitó,\ny a ti, abogado y consuelo del cristiano, por los siglos se rinda admiración.\nAmén.")},
-{g:"Inicio",t:"Oración de intercesión al Santo Padre Pío",s:"Con petición personal en silencio",h:v("Oh, amado Señor, Padre Eterno en la Santa Trinidad;\nte damos gracias y te glorificamos,\nporque de tu Divina Voluntad glorificada\npor los méritos del sacrificio perpetuo de tu amado Hijo en la cruz y en el sagrario,\nhemos recibido, según su promesa,\nlos dones del Santo Espíritu,\nel amor, la paz y la gracia de la vida eterna.\n\nAsí como miraste con misericordia\nal amado Padre Pío de Pietrelcina\ny lo llamaste a tu servicio, para hacerlo a tus ojos víctima de amor,\nimprimiendo en su cuerpo las huellas de la pasión de tu amado Hijo,\nte pedimos humildemente\naceptes, por su entrega y servicio a tu Hijo,\ny por su intercesión, las súplicas que nosotros,\nsus hijos espirituales\ny servidores de la Comunidad Apostólica Servidores del Servidor,\nelevamos a ti:\n\nPor el Papa.\nPor la Santa Iglesia Católica.\nPor nuestros Obispos y Sacerdotes.\nPor nuestra Comunidad.\nPor las almas.\nPor nosotros pecadores.\nPor los más humildes, menesterosos y abandonados miseritos.\n\nY especialmente por la necesidad que ahora te entregamos a la luz del Espíritu Santo desde el fondo de nuestros corazones…")+note("Hacer la petición personal en silencio.")+v("Confiados en tu bondad e infinita misericordia te suplicamos,\nsegún tu Santa Voluntad, nos concedas lo que te pedimos\npor intercesión del Santo Padre Pío,\nsi es para nuestro bien y salvación.\nGracias, mi Señor.\n\nConfiados en tu divina providencia, danos entonces la fe para glorificarte,\ndanos la esperanza para adorarte\ny danos la caridad para amarte, haciendo con nuestros hermanos según tu palabra.")+note("Padre nuestro, Ave María y Gloria.")},
+{g:"Inicio",t:"Oración de intercesión al Santo Padre Pío",ch:[15,560,1],s:"Con petición personal en silencio",h:v("Oh, amado Señor, Padre Eterno en la Santa Trinidad;\nte damos gracias y te glorificamos,\nporque de tu Divina Voluntad glorificada\npor los méritos del sacrificio perpetuo de tu amado Hijo en la cruz y en el sagrario,\nhemos recibido, según su promesa,\nlos dones del Santo Espíritu,\nel amor, la paz y la gracia de la vida eterna.\n\nAsí como miraste con misericordia\nal amado Padre Pío de Pietrelcina\ny lo llamaste a tu servicio, para hacerlo a tus ojos víctima de amor,\nimprimiendo en su cuerpo las huellas de la pasión de tu amado Hijo,\nte pedimos humildemente\naceptes, por su entrega y servicio a tu Hijo,\ny por su intercesión, las súplicas que nosotros,\nsus hijos espirituales\ny servidores de la Comunidad Apostólica Servidores del Servidor,\nelevamos a ti:\n\nPor el Papa.\nPor la Santa Iglesia Católica.\nPor nuestros Obispos y Sacerdotes.\nPor nuestra Comunidad.\nPor las almas.\nPor nosotros pecadores.\nPor los más humildes, menesterosos y abandonados miseritos.\n\nY especialmente por la necesidad que ahora te entregamos a la luz del Espíritu Santo desde el fondo de nuestros corazones…")+note("Hacer la petición personal en silencio.")+v("Confiados en tu bondad e infinita misericordia te suplicamos,\nsegún tu Santa Voluntad, nos concedas lo que te pedimos\npor intercesión del Santo Padre Pío,\nsi es para nuestro bien y salvación.\nGracias, mi Señor.\n\nConfiados en tu divina providencia, danos entonces la fe para glorificarte,\ndanos la esperanza para adorarte\ny danos la caridad para amarte, haciendo con nuestros hermanos según tu palabra.")+note("Padre nuestro, Ave María y Gloria.")},
 {g:"Inicio",t:"Intenciones comunitarias",h:`<p>a. Por la Santa Madre Iglesia y el Santo Padre.</p><p>b. Por los Obispos y Sacerdotes que acompañan la Comunidad,</p><p>c. por las obras y puntos de servicio.</p><p>d. Por las necesidades y conversión de los servidores del servidor en el mundo y sus familias.</p><p>e. Por el alma de los hermanos servidores del servidor fallecidos.</p><p>f. Por los hermanos miseritos que se atienden en los diferentes puntos de servicio.</p><p>g. Por los providentes y los que han solicitado oración a través de la Comunidad.</p>`}
 ];
 MYS.forEach((m,i)=>S.push({g:"Misterios dolorosos",t:`${ORD[i]} misterio`,s:m,mys:i}));
@@ -103,38 +137,39 @@ S.push(
 {g:"Final",t:"Consagración a la Virgen María",h:v("¡Oh Señora mía! ¡Oh Madre mía!\nYo me ofrezco en todo a ti,\ny en prueba de mi filial afecto te consagro en este día\nmis ojos, mis oídos, mi lengua, mi corazón,\nen una palabra, todo mi ser.\nY ya que soy todo tuyo, oh Madre de bondad,\nguárdame y defiéndeme como hijo y posesión tuya.\nAmén.")},
 {g:"Final",t:"Oración a San Miguel Arcángel",h:v("San Miguel Arcángel, defiéndenos en la pelea,\nsé nuestro amparo contra la maldad y las acechanzas del demonio.\nReprímele, oh Dios, como rendidamente te lo suplicamos,\ny tú, príncipe de la milicia celestial,\narmado del poder divino, precipita al infierno a Satanás\ny a todos los espíritus malignos que para la perdición de las almas\nandan por el mundo.\nAmén.")},
 {g:"Final",t:"Ángel de la Guarda",h:v("Santo Ángel de mi guarda,\nmi dulce compañía,\nno me desampares ni de noche ni de día,\nhasta que me pongas en paz y alegría\ncon todos los santos, Jesús, José y María.\nSi me desamparas, ¿qué será de mí?\nSanto Ángel de mi guarda, ruega a Dios por mí.\nAmén.")},
-{g:"Final",t:"Letanías a la Virgen",s:"Con su oración",lit:1},
-{g:"Final",t:"Oración final",h:v("Dulce Madre, no te alejes,\ntu vista de nosotros no apartes,\nven con nosotros a todas partes\ny solos nunca nos dejes.\nY ya que nos amas tanto\ncomo verdadera Madre,\nhaz que nos bendiga\nel Padre, el Hijo y el Espíritu Santo.\nAmén.")},
+{g:"Final",t:"Letanías a la Virgen",s:"Con su oración",lit:1,lk:6,ch:[10,420,1]},
+{g:"Final",t:"Oración final",ch:[12,400,1],h:v("Dulce Madre, no te alejes,\ntu vista de nosotros no apartes,\nven con nosotros a todas partes\ny solos nunca nos dejes.\nY ya que nos amas tanto\ncomo verdadera Madre,\nhaz que nos bendiga\nel Padre, el Hijo y el Espíritu Santo.\nAmén.")},
 {g:"Final",t:"Jaculatorias",h:`<ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul>`}
 );
-const LIT_K=[["Señor, ten piedad.",""],["Cristo, ten piedad.",""],["Señor, ten piedad.",""],["Cristo, óyenos.",""],["Cristo, escúchanos.",""]];
+const LIT_K=[["Señor, ten piedad.",""],["Cristo, ten piedad.",""],["Señor, ten piedad.",""],["Cristo, óyenos.","Cristo, óyenos."],["Cristo, escúchanos.","Cristo, escúchanos."]];
 const PIE=["Dios, Padre celestial,","Dios, Hijo, Redentor del mundo,","Dios, Espíritu Santo,","Santísima Trinidad, un solo Dios,"];
 const RUEGA=["Santa Madre de Dios","Santa Virgen de las Vírgenes","Madre de Cristo","Madre de la Iglesia","Madre purísima","Madre castísima","Madre y Virgen","Madre sin mancha","Madre inmaculada","Madre amable","Madre de la divina gracia","Madre admirable","Madre del buen consejo","Madre del Creador","Madre del Salvador","María, Madre de los Servidores","Virgen digna de veneración","Virgen poderosa","Virgen acogedora","Virgen fiel","Ideal de santidad","Trono de la sabiduría","Causa de nuestra alegría","Templo del Espíritu Santo","Obra maestra de la gracia","Modelo de entrega a Dios","Rosa escogida","Fuerte como torre de David","Hermosa como torre de marfil","Arca de la nueva Alianza","Puerta del cielo","Estrella de la mañana","Salud de los enfermos","Refugio de los pecadores","Consoladora de los tristes","Auxilio de los cristianos","Reina de los Ángeles","Reina de los Patriarcas","Reina de los Profetas","Reina de los Apóstoles","Reina de los Mártires","Reina de los confesores e la fe","Reina de todos los Santos","Reina concebida sin pecado original","Reina llevada al Cielo","Reina del Santo Rosario","Reina de la paz","Reina de la Compañía de Jesús"];
 function litHTML(){let h=note("Quien guía dice la invocación; todos responden lo que está en color.")+'<div class="lit">';
-LIT_K.forEach(([a])=>h+=`<p>${a}</p>`);PIE.forEach(a=>h+=`<p>${a} <span class="r">ten piedad de nosotros.</span></p>`);
+LIT_K.forEach(([a,b])=>h+=`<p>${a}${b?` <span class="r">${b}</span>`:""}</p>`);PIE.forEach(a=>h+=`<p>${a} <span class="r">ten piedad de nosotros.</span></p>`);
 RUEGA.forEach(a=>h+=`<p>${a}, <span class="r">ruega por nosotros.</span></p>`);
 ["Perdónanos, Señor.","Escúchanos, Señor.","Ten piedad de nosotros."].forEach(r=>h+=`<p>Cordero de Dios, que quitas el pecado del mundo, <span class="r">${r}</span></p>`);
 h+=`<p>Ruega por nosotros, Santa Madre de Dios.</p><p class="r">Para que seamos dignos de las promesas de Cristo.</p></div><h3>Oración</h3>`+v("Señor y Dios nuestro,\nte rogamos nos concedas, como servidores tuyos,\ngozar siempre de salud de alma y cuerpo;\ny por la intercesión gloriosa de la bienaventurada siempre Virgen María,\nlíbranos de las tristezas de la vida presente\ny otórganos las alegrías eternas.\nPor Jesucristo nuestro Señor.\nAmén.");return h}
 const SALVE_ES="Dios te salve, Reina y Madre,\nMadre de misericordia,\nvida, dulzura y esperanza nuestra;\nDios te salve. A ti clamamos los desterrados hijos de Eva;\na ti suspiramos, gimiendo y llorando en este valle de lágrimas.\nEa, pues, Señora, abogada nuestra,\nvuelve a nosotros esos tus ojos misericordiosos;\ny después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre.\n¡Oh clemente, oh piadosa,\noh dulce siempre Virgen María!\n\nRuega por nosotros, Santa Madre de Dios,\npara que seamos dignos de alcanzar y gozar las promesas y gracias de Nuestro Señor Jesucristo.\nAmén.";
 const SALVE_LA="Salve, Regina, Mater misericordiae.\nVita, dulcedo et spes nostra, salve.\nAd te clamamus exsules filii Hevae.\nAd te suspiramus gementes et flentes in hac lacrimarum valle.\nEia, ergo, advocata nostra, illos tuos misericordes oculos ad nos converte;\net Iesum, benedictum fructum ventris tui, nobis post hoc exsilium ostende.\nO clemens, O pia, O dulcis Virgo Maria.\n\nV. Ora pro nobis, sancta Dei Genetrix.\nR. Ut digni efficiamur promissionibus Christi.\nAmen.";
 function tabs(la,es,first){const L=`<p class="verse lat">${la}</p>`,E=v(es);const a=first==="la";return `<div class="tg"><div class="tabs"><button class="${a?"on":""}" data-l="la">Latín</button><button class="${a?"":"on"}" data-l="es">Español</button></div><div class="pane${a?"":" hidden"}" data-l="la">${L}</div><div class="pane${a?" hidden":""}" data-l="es">${E}</div></div>`}
-function mysHTML(i){const last=i===4;let h=`<p class="mname">${MYS[i]}</p>`;
+function mysHTML(i,lat){const last=i===4&&lat;let h=`<p class="mname">${MYS[i]}</p>`;
 if(i===0)h+=note("Ofrecimiento: las intenciones ya se ofrecieron al inicio; ahora meditamos el misterio como un solo corazón.");
-if(last)h+=note("Se recomienda rezar este último misterio de rodillas, en señal de penitencia, y en latín.");
-h+=`<h3>Padre nuestro</h3>`+(last?tabs(LPN,PN,"la"):`<details><summary>Ver texto</summary>${v(PN)}</details>`);
-h+=`<h3>Diez Ave María</h3>`+(last?tabs(LAM,AM,"la"):`<details><summary>Ver texto</summary>${v(AM)}</details>`);
+if(i===4)h+=note("Se recomienda rezar este último misterio de rodillas, en señal de penitencia.");
+if(i===4&&!lat)h+=`<details><summary>Rezar en latín (Pater Noster, Ave María, Gloria)</summary><p class="verse lat">${LPN}</p><p class="verse lat">${LAM}</p><p class="verse lat">${LGL}</p></details>`;
+h+=`<h3>Padre nuestro</h3>`+(last?`<p class="verse lat">${LPN}</p>`:`<details><summary>Ver texto</summary>${v(PN)}</details>`);
+h+=`<h3>Diez Ave María</h3>`+(last?`<p class="verse lat">${LAM}</p>`:`<details><summary>Ver texto</summary>${v(AM)}</details>`);
 h+=`<div class="beads" data-n="10"></div><p class="count"></p><button class="reset" data-reset>Reiniciar cuentas</button>`;
-h+=`<h3>Gloria</h3>`+(last?tabs(LGL,GL,"la"):`<details><summary>Ver texto</summary>${v(GL)}</details>`);
+h+=`<h3>Gloria</h3>`+(last?`<p class="verse lat">${LGL}</p>`:`<details><summary>Ver texto</summary>${v(GL)}</details>`);
 h+=`<h3>Oh, mi buen Jesús</h3>`+v(OH);
 h+=`<h3>Jaculatorias</h3>`+note(i===0?"Rezar dos jaculatorias propias de la comunidad; si se quiere, se agrega una más.":"Rezar dos jaculatorias propias de la comunidad.");
-h+=`<ul class="jac"><li>${JAC[(i*2)%9]}</li><li>${JAC[(i*2+1)%9]}</li></ul><details><summary>Ver todas las jaculatorias</summary><ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul></details>`;return h}
+h+=`<details><summary>Ver todas las jaculatorias</summary><ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul></details>`;return h}
 const app=document.getElementById("app"),bar=document.getElementById("bar");
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,x){try{localStorage.setItem(k,x)}catch(e){}}};
 let fs=parseFloat(store.get("fs"))||1.15;const setFs=()=>document.documentElement.style.setProperty("--fs",fs+"rem");setFs();
 document.getElementById("fsp").onclick=()=>{fs=Math.min(1.8,fs+.1);setFs();store.set("fs",fs)};
 document.getElementById("fsm").onclick=()=>{fs=Math.max(.95,fs-.1);setFs();store.set("fs",fs)};
 let visited=new Set();
-function home(){bar.classList.add("hidden");let h=`<section class="hero"><div class="cross">✝</div><h1>Santo Rosario</h1><p>Al estilo Servidores del Servidor · Martes, misterios dolorosos</p></section><button class="start" onclick="go(0)">Comenzar el Rosario</button>`;
+function home(){bar.classList.add("hidden");let h=`<section class="hero"><div class="cross">✝</div><h1>Santo Rosario</h1><p>Al estilo Servidores del Servidor · Martes, misterios dolorosos</p></section><button class="start" onclick="go(0)">Comenzar el Rosario</button><button class="start proj-btn" onclick="setProj(true)">📺 Modo proyección para Google Meet</button><p class="hint">Use el modo proyección cuando comparta pantalla: muestra pocas líneas con letra muy grande, para que se lea bien desde el celular.</p>`;
 let g="";h+='<ol class="index">';S.forEach((s,i)=>{if(s.g!==g){g=s.g;h+=`</ol><p class="grp">${g}</p><ol class="index">`}
 h+=`<li class="${visited.has(i)?"done":""} ${s.mys!==undefined?"mys":""}"><a href="#/${i+1}"><span class="bead">${i+1}</span><span><span class="ttl">${s.t}</span>${s.s?`<span class="sub">${s.s}</span>`:""}</span></a></li>`});
 app.innerHTML=h+"</ol>";window.scrollTo(0,0)}
@@ -151,8 +186,75 @@ draw();const r=app.querySelector("[data-reset]");if(r)r.onclick=()=>{k=0;draw()}
 app.querySelectorAll(".tg").forEach(g=>g.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{g.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===t));g.querySelectorAll(".pane").forEach(x=>x.classList.toggle("hidden",x.dataset.l!==t.dataset.l))}));
 window.scrollTo(0,0)}
 document.getElementById("bmenu").onclick=()=>{location.hash="#/"};
-function route(){const n=parseInt((location.hash.split("/")[1])||"");(n>=1&&n<=S.length)?page(n-1):home()}
-window.addEventListener("hashchange",route);route();
+function route(){const pa=location.hash.split("/");const n=parseInt(pa[1]||"");const k=parseInt(pa[2]||"0")||0;
+if(PROJ.active){document.body.classList.add("pm");return (n>=1&&n<=S.length)?projPage(n-1,k):projHome()}
+document.body.classList.remove("pm");(n>=1&&n<=S.length)?page(n-1):home()}
+window.addEventListener("hashchange",route);
+</script>
+
+<script>
+const PROJ={active:store.get("proj")==="1",flip:false,beads:0,slides:null,i:-1};
+document.getElementById("pmode").onclick=()=>setProj(true);
+function setProj(on){PROJ.active=on;store.set("proj",on?"1":"0");route()}
+function pageHTML(i){const s=S[i];return s.mys!==undefined?mysHTML(s.mys,PROJ.flip):s.salve?note("Se puede cantar en latín o rezar en español.")+tabs(SALVE_LA,SALVE_ES,"es"):s.lit?litHTML():s.h}
+function slidesFor(i){const CH=S[i].ch||[6,300,0],ML=CH[0],MC=CH[1],KB=CH[2];const t=document.createElement("div");t.innerHTML=pageHTML(i);const out=[];let label="",used=true,pend="",acc=[],accCls="";
+const push=o=>{out.push(Object.assign({label,note:pend},o));pend="";used=true};
+const flush=()=>{if(!acc.length)return;let cur=[],len=0;const fin=()=>{if(cur.length){const L=out[out.length-1];if(cur.length===1&&cur[0].length<14&&L&&L.lines&&!L.html&&L.label===label&&!pend)L.lines.push(cur[0]);else push({lines:cur,cls:accCls})}cur=[];len=0};
+acc.forEach(l=>{l=l.trim();if(!l){if(!KB)fin();return}if(cur.length&&(cur.length>=ML||len+l.length>MC))fin();cur.push(l);len+=l.length});fin();acc=[]};
+const walk=nodes=>{for(const n of nodes){if(n.nodeType!==1)continue;const c=n.classList,tg=n.tagName;
+if(tg==="DETAILS"||tg==="BUTTON"||c.contains("count"))continue;
+if(tg==="P"&&!c.contains("mname")){const cls=c.contains("lat")?"lat":"";if(acc.length&&cls!==accCls)flush();accCls=cls;acc.push(...n.textContent.split("\n"),"");continue}
+flush();
+if(tg==="H3"){if(!used)push({big:label});label=n.textContent;used=false;continue}
+if(c.contains("mname")){push({big:n.textContent,cls:"mys"});continue}
+if(c.contains("note")){pend=(pend?pend+" ":"")+n.textContent;continue}
+if(c.contains("beads")){push({beads:+n.dataset.n});continue}
+if(c.contains("tg")){const ps=[...n.querySelectorAll(".pane")];let p=ps.find(x=>!x.classList.contains("hidden"));if(PROJ.flip)p=ps.find(x=>x!==p);walk(p.children);flush();continue}
+if(c.contains("lit")){const ls=[...n.querySelectorAll("p")].map(x=>x.innerHTML);const LK=S[i].lk||3;for(let j=0;j<ls.length;j+=LK)push({lines:ls.slice(j,j+LK),html:1});continue}
+if(tg==="UL"){const ls=[...n.querySelectorAll("li")].map(li=>li.textContent);for(let j=0;j<ls.length;j+=3)push({lines:ls.slice(j,j+3),cls:"jac"});continue}
+if(n.children.length)walk(n.children)}};
+walk(t.children);flush();if(!used)push({big:label});else if(pend&&out.length){const L=out[out.length-1];L.postNote=[L.postNote,pend].filter(Boolean).join(" ")}else if(pend)push({big:""});
+const r=[];for(let j=0;j<out.length;j++){const x=out[j],nx=out[j+1],lone=x.big&&!x.lines&&!x.beads&&x.big===x.label&&x.cls!=="mys";
+if(lone&&r.length&&r[r.length-1].beads&&!r[r.length-1].post){const pv=r[r.length-1];pv.post=x.big;pv.postNote=x.note;continue}
+if(lone&&nx&&(nx.lines||nx.beads)&&!nx.pre){nx.pre=x.big;nx.note=[x.note,nx.note].filter(Boolean).join(" ");continue}
+if(lone&&r.length&&!r[r.length-1].post){const pv=r[r.length-1];pv.post=x.big;pv.postNote=x.note;continue}
+r.push(x)}return r}
+const THEMES=["--acc:#E9BE62;--txt:#FFF8E8","--acc:#7CC4FF;--txt:#DCEEFF","--acc:#86DDA8;--txt:#E0F6E8"];
+const esc=x=>x.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+function projHome(){window.scrollTo(0,0);let h=`<div class="pmenu"><h1>✝ Santo Rosario</h1><p class="sub">Servidores del Servidor · Modo proyección</p><div class="prow"><button class="go" onclick="go(0)">Comenzar el Rosario ▶</button><button class="out" onclick="fullS()">⛶ Pantalla completa</button><button class="out" onclick="setProj(false)">Salir del modo proyección</button></div><div class="pgrid">`;
+S.forEach((s,i)=>h+=`<a class="${s.mys!==undefined?"m":""}" href="#/${i+1}/0"><b>${i+1}</b>${s.t}${s.mys!==undefined?" · "+s.s:""}</a>`);
+app.innerHTML=h+`</div><p class="keys">Teclado: → o espacio para avanzar · ← para volver · M para el menú · F pantalla completa</p></div>`}
+function projPage(i,k){if(PROJ.i!==i||!PROJ.slides||PROJ.flipFor!==i){if(PROJ.i!==i)PROJ.flip=false;PROJ.slides=slidesFor(i);PROJ.i=i;PROJ.flipFor=i}
+const sl=PROJ.slides;k=Math.max(0,Math.min(k,sl.length-1));PROJ.k=k;if(PROJ.lastKey!==i+"/"+k){PROJ.beads=0;PROJ.lastKey=i+"/"+k}
+const x=sl[k],s=S[i];let c="";
+if(x.pre)c+=`<div class="lbl">${esc(x.pre)}</div>`;if(x.label)c+=`<div class="lbl">${esc(x.label)}</div>`;
+if(x.note)c+=`<div class="pn">${esc(x.note)}</div>`;
+if(x.big)c+=`<div class="big ${x.cls||""}">${esc(x.big)}</div>`;
+if(x.lines)c+=`<div class="txt ${x.cls||""}">${x.lines.map(l=>x.html?l:esc(l)).join("<br>")}</div>`;
+if(x.beads){c+=`<div class="pb">`;for(let j=0;j<x.beads;j++)c+=`<span class="${j<PROJ.beads?"on":""}">${j+1}</span>`;c+="</div>"}
+if(x.post)c+=`<div class="lbl" style="margin-top:.5em">${esc(x.post)}</div>`;if(x.postNote)c+=`<div class="pn" style="margin-top:.4em">${esc(x.postNote)}</div>`;if(s.mys===4&&!PROJ.flip&&k===1)c+=`<div><button class="latbtn" onclick="event.stopPropagation();pFlip()">Rezar en latín</button></div>`;if(!c)c=`<div class="big">${esc(s.t)}</div>`;
+const total=S.length,prog=((i+(k+1)/sl.length)/total*100).toFixed(1),hasTg=pageHTML(i).includes('class="tg"')||S[i].mys===4;
+app.innerHTML=`<div class="proj" style="${THEMES[i%3]}"><div class="ph"><span>${i+1}. ${esc(s.t)}${s.mys!==undefined?`<span style="font-size:.6em;font-weight:400"> — ${esc(s.s)}</span>`:""}</span><span class="k">${k+1} / ${sl.length}</span></div><div class="pbar"><i style="width:${prog}%"></i></div>
+<div class="stage" id="stage"><div class="content" id="content">${c}</div></div>
+<div class="pf"><button onclick="pPrev()">◀ Anterior</button><button onclick="location.hash='#/'">☰ Menú</button>${hasTg?`<button onclick="pFlip()">${s.mys===4?(PROJ.flip?"Volver a español":"Latín"):"Latín / Español"}</button>`:""}<button onclick="fullS()">⛶</button><button class="grow nx" onclick="pNext()">${x.beads&&PROJ.beads<x.beads?"Siguiente Ave María ▶":k===sl.length-1?(i===total-1?"Terminar ▶":"Siguiente oración ▶"):"Siguiente ▶"}</button></div></div>`;
+document.getElementById("stage").onclick=e=>{if(e.target.closest(".pb span")){const j=[...e.target.parentNode.children].indexOf(e.target.closest("span"));PROJ.beads=j+1===PROJ.beads?j:j+1;projPage(i,k)}else pNext()};
+fit()}
+function fit(){const st=document.getElementById("stage"),ct=document.getElementById("content");if(!st)return;
+const H=st.clientHeight-8,W=st.clientWidth;let lo=14,hi=Math.max(20,Math.min(innerHeight*.16,innerWidth*.09));
+for(let n=0;n<14;n++){const m=(lo+hi)/2;ct.style.fontSize=m+"px";(ct.scrollHeight<=H&&ct.scrollWidth<=W)?lo=m:hi=m}ct.style.fontSize=lo+"px"}
+function pNext(){const i=PROJ.i,k=PROJ.k,x=PROJ.slides[k];if(x.beads&&PROJ.beads<x.beads){PROJ.beads++;const b=PROJ.beads;projPage(i,k);PROJ.beads=b;return}
+if(k<PROJ.slides.length-1)location.hash=`#/${i+1}/${k+1}`;else if(i<S.length-1)location.hash=`#/${i+2}/0`;else location.hash="#/"}
+function pPrev(){const i=PROJ.i,k=PROJ.k;if(k>0)location.hash=`#/${i+1}/${k-1}`;else if(i>0)location.hash=`#/${i}/${slidesFor(i-1).length-1}`}
+function pFlip(){PROJ.flip=!PROJ.flip;PROJ.slides=slidesFor(PROJ.i);projPage(PROJ.i,S[PROJ.i].mys===4?1:Math.min(PROJ.k,PROJ.slides.length-1))}
+function fullS(){try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}}
+addEventListener("keydown",e=>{if(!PROJ.active||e.altKey||e.ctrlKey||e.metaKey)return;const inPage=PROJ.i>=0&&/^#\/\d+/.test(location.hash);
+if(["ArrowRight","PageDown"," ","Enter"].includes(e.key)){if(inPage){e.preventDefault();pNext()}}
+else if(["ArrowLeft","PageUp","Backspace"].includes(e.key)){if(inPage){e.preventDefault();pPrev()}}
+else if(e.key==="m"||e.key==="M"||e.key==="Escape"){location.hash="#/"}
+else if(e.key==="f"||e.key==="F"){fullS()}
+else if((e.key==="l"||e.key==="L")&&inPage){pFlip()}});
+addEventListener("resize",()=>{if(PROJ.active)fit()});
+route();
 </script>
 </body>
 </html>
