@@ -141,7 +141,7 @@ S.push(
 {g:"Final",t:"Oración final",ch:[12,400,1],h:v("Dulce Madre, no te alejes,\ntu vista de nosotros no apartes,\nven con nosotros a todas partes\ny solos nunca nos dejes.\nY ya que nos amas tanto\ncomo verdadera Madre,\nhaz que nos bendiga\nel Padre, el Hijo y el Espíritu Santo.\nAmén.")},
 {g:"Final",t:"Jaculatorias",h:`<ul class="jac">${JAC.map(j=>`<li>${j}</li>`).join("")}</ul>`}
 );
-const LIT_K=[["Señor, ten piedad.",""],["Cristo, ten piedad.",""],["Señor, ten piedad.",""],["Cristo, óyenos.","Cristo, óyenos."],["Cristo, escúchanos.","Cristo, escúchanos."]];
+const LIT_K=[["Señor, ten piedad.","Señor, ten piedad."],["Cristo, ten piedad.","Cristo, ten piedad."],["Señor, ten piedad.","Señor, ten piedad."],["Cristo, óyenos.","Cristo, óyenos."],["Cristo, escúchanos.","Cristo, escúchanos."]];
 const PIE=["Dios, Padre celestial,","Dios, Hijo, Redentor del mundo,","Dios, Espíritu Santo,","Santísima Trinidad, un solo Dios,"];
 const RUEGA=["Santa Madre de Dios","Santa Virgen de las Vírgenes","Madre de Cristo","Madre de la Iglesia","Madre purísima","Madre castísima","Madre y Virgen","Madre sin mancha","Madre inmaculada","Madre amable","Madre de la divina gracia","Madre admirable","Madre del buen consejo","Madre del Creador","Madre del Salvador","María, Madre de los Servidores","Virgen digna de veneración","Virgen poderosa","Virgen acogedora","Virgen fiel","Ideal de santidad","Trono de la sabiduría","Causa de nuestra alegría","Templo del Espíritu Santo","Obra maestra de la gracia","Modelo de entrega a Dios","Rosa escogida","Fuerte como torre de David","Hermosa como torre de marfil","Arca de la nueva Alianza","Puerta del cielo","Estrella de la mañana","Salud de los enfermos","Refugio de los pecadores","Consoladora de los tristes","Auxilio de los cristianos","Reina de los Ángeles","Reina de los Patriarcas","Reina de los Profetas","Reina de los Apóstoles","Reina de los Mártires","Reina de los confesores e la fe","Reina de todos los Santos","Reina concebida sin pecado original","Reina llevada al Cielo","Reina del Santo Rosario","Reina de la paz","Reina de la Compañía de Jesús"];
 function litHTML(){let h=note("Quien guía dice la invocación; todos responden lo que está en color.")+'<div class="lit">';
@@ -238,7 +238,7 @@ app.innerHTML=`<div class="proj" style="${THEMES[i%3]}"><div class="ph"><span>${
 <div class="stage" id="stage"><div class="content" id="content">${c}</div></div>
 <div class="pf"><button onclick="pPrev()">◀ Anterior</button><button onclick="location.hash='#/'">☰ Menú</button>${hasTg?`<button onclick="pFlip()">${s.mys===4?(PROJ.flip?"Volver a español":"Latín"):"Latín / Español"}</button>`:""}<button onclick="fullS()">⛶</button><button class="grow nx" onclick="pNext()">${x.beads&&PROJ.beads<x.beads?"Siguiente Ave María ▶":k===sl.length-1?(i===total-1?"Terminar ▶":"Siguiente oración ▶"):"Siguiente ▶"}</button></div></div>`;
 document.getElementById("stage").onclick=e=>{if(e.target.closest(".pb span")){const j=[...e.target.parentNode.children].indexOf(e.target.closest("span"));PROJ.beads=j+1===PROJ.beads?j:j+1;projPage(i,k)}else pNext()};
-fit()}
+fit();if(document.fonts)document.fonts.ready.then(fit)}
 function fit(){const st=document.getElementById("stage"),ct=document.getElementById("content");if(!st)return;
 const H=st.clientHeight-8,W=st.clientWidth;let lo=14,hi=Math.max(20,Math.min(innerHeight*.16,innerWidth*.09));
 for(let n=0;n<14;n++){const m=(lo+hi)/2;ct.style.fontSize=m+"px";(ct.scrollHeight<=H&&ct.scrollWidth<=W)?lo=m:hi=m}ct.style.fontSize=lo+"px"}
